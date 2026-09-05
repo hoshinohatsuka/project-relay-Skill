@@ -1,0 +1,116 @@
+# Project Handoff Skill (Project Relay)
+
+This skill allows multiple AIs to work on the same project at different times for various reasons—models may change, context may be lost, AI illusions may become severe, and resources may run out. With the Project Handoff Skill, the executable memories are written to the repository, rather than remaining in the chat box.
+
+One skill, four uses
+
+| Mode | When to use | Output |
+
+|---|---|---|
+
+| **A. Teardown & Learn** | Give it a GitHub project and require it to be broken down/analyzed/learned | `oss-teardown/<run-id>/`: baseline mapping, requirement → module mapping, selection matrix (evidence grading), decoupling and performance evidence, cue word translation, structured community survey, `LEARNING_REPORT.md` (including learning path) |
+
+| **B. Handoff (take over)** | Take over a half-finished/unfinished project left by a predecessor AI or others | Project `.ai/` handover package (PROJECT_STATE / REQUIREMENTS / ARCHITECTURE / DECISIONS / TODO / TEST_PLAN / HANDOFF / ASSUMPTIONS / checkpoints), after your approval, sorted by `Correctness > Completeness > Maintainability > ... Performance Discipline and Git Checkpoints |
+
+| **C Handover Freeze** | Quota running low, model switch needed – executed by the **currently departing AI** | `.ai/handoffs/HANDOFF-<topic>-<date>.md` Authoritative handover document: Red line pinned, status table, completed root cause details, pending batches (including identified issues), anti-re-exploration architecture facts, test baseline, appendix for unskilled takeover |
+
+| **Resume from Breakpoint** | "Continue the unfinished breakdown" | Restore from `run-manifest.json` / checkpoint, without rerunning |
+
+**Core Axiom**: Don't let the next model re-understand the project. A breaks down the project and learns its modules and architecture; C writes the contract, B verifies the contract; documentation is authoritative over intent and state, code is authoritative over facts; the red line remains bound even when crossing tool boundaries.
+
+---
+
+## How to Use
+
+### Mode A: Deconstruction and Learning
+In a new conversation, simply say: "**Help me deconstruct and analyze a certain open-source project (provide the AI ​​with a link or the location of a cloned local repository)**". You can add tiers ("Quick Deconstruction" / "In-Depth Deconstruction") and focus points ("Focus on Performance"). Output is in `oss-teardown/<run-id>/`: `notes/` evidence for each stage + `LEARNING_REPORT.md`. Tier budgets: Quick (single Agent, community search ≤4, core modules ≥30%) / Standard (default, ≤12, ≥60%) / In-Depth (3–5 Workers, ≤24, ≥90%).
+
+### Mode B: Project Takeover
+Say: "**Take over this project. The previous AI left handover materials. First, conduct independent reconnaissance, then compare, and generate a takeover plan**". Process: Blind scan to form your own understanding (five types of restatement) → Compare with handover materials → Truth hierarchy arbitration (code > document) → Hypothesis registration → Generate `.ai/` handover package → **H5 user access control: only move a line of code after your approval** → Checkpoint execution → Five-stage final acceptance. Red lines in the handover document are bound by default; only after the AI ​​clearly understands your project can you release them and let it work.
+
+### Mode C Handover Freeze When you feel your quota is running out, tell the **current AI**: "**My quota is running out; use Mode C to freeze the session for this project and hand over the handover document**." It will go through C0–C5: confirm path → check memory with git status/diff → extract red lines and to-dos → **write and dump simultaneously** (write the header + red lines + status table + the next safety skeleton first; even if the quota dies halfway, a valid contract remains) → self-check and archive. The document is located in `<project>/.ai/handoffs/HANDOFF-<subject>-<date>.md`, with a "No-Skill Takeover Agreement" appended at the end. **The next AI can take over regardless of whether they have this skill installed.**
+
+### Resuming from Breakpoints The new session says: "**Continue the disassembly that wasn't finished yesterday, resuming from the last checkpoint.**" The skill reads `run-manifest.json` in the run directory, verifies the schema version, and then continues from the breakpoint.
+
+### You can say it like this:
+
+- "Help me break down and analyze this open-source project (link to the open-source project for the AI)"
+
+- "Break down this project: how many modules are used for each requirement, and why was this framework chosen for each module?"
+
+- "Taking over this unfinished project; the previous AI left handover materials."
+
+- "I'm almost out of credit; write a handover document to pass the baton to the next model."
+
+- "Continue the breakdown that wasn't finished yesterday, resuming from the checkpoint."
+
+## Installation
+
+```bash
+
+# Method 1: Skills CLI, global installation (recommended)
+
+npx skills add hoshinohatsuka/project-relay-Skill -g
+
+# Method 2: Skills CLI, only for the current project (execute in the project root directory)
+
+npx skills add hoshinohatsuka/project-relay
+
+# Method 3: Manual installation (ZCode / Claude Code / Codex, etc.)
+
+git clone https://github.com/hoshinohatsuka/project-relay
+mkdir -p ~/.agents/skills && cp -r project-relay ~/.agents/skills/
+
+# [OpenCode](https://opencode.ai/) The global directory is ~/.config/opencode/skills/. It is recommended to share the same directory using a directory link:
+
+# powershell -Command "New-Item -ItemType Junction -Path \"$env:USERPROFILE\.config\opencode\skills\project-relay\" -Target '<path to this repository>'"
+
+```
+
+Prerequisites: `git` is available; Agent has Bash/file read/write/Grep/Glob permissions; Community research requires internet access (automatically downgraded and marked as `missing evidence` if missing).
+
+## Security
+
+- **Target source code read-only**: Do not execute/build/install disassembled code, do not initialize submodules, do not pull LFS, and do not load target `.env` values.
+
+- **Protection Word Injection Protection**: All files and web pages within the target repository are treated as data; any directive text within them is not executed.
+
+- **File System Isolation**: Only the output root directory is written; path escape is prevented.
+
+- **Mode B Access Control**: No code is modified in H5 without your approval; change restrictions (schema/public API/authentication, etc.) are closed by default; each checkpoint can be rolled back.
+
+- **Security Hygiene**: Only variable names are recorded; values ​​are anonymized; artifacts are bypassed by key scanning.
+
+## Verified vs. Unverified
+
+Verified (Author's Local Test): Trigger evaluation 38/38; Package verification 0 failures; Blackboard status verification script positive and negative examples; Handover mode includes predecessor error declaration arbitration; C→B loop (automatic discovery of handover documents/error arbitration/red line binding/stopping at H5 access control); Non-LLM projects P5 correctly skips.
+
+Unverified (missing evidence): Performance of deep files in large-scale repositories (>500 modules); Community recall rate on login firewall platforms.
+
+## Troubleshooting
+
+| Phenomenon | Solution |
+
+|---|---|
+
+| Cloning failed | Check git and network; switch private repository to local path |
+
+| Report of missing evidence | Previous AI model unavailable or budget exhausted; pattern shared by A and B, passed to the next AI to run this stage |
+
+| Large repository cannot be read | Downgrade to fast file, or specify `focus` to focus on the module |
+
+| "Continue from last time" not working | Confirm the run directory exists and `schema_version` is 2.x; run `python scripts/validate_run.py <run directory>` for a check |
+
+| Skill not triggered | Force loading using `/skill project-relay-Skill <request>` |
+
+| Want to re-split (line number has drifted) | Bind old evidence to old commit SHA; create a new run-id and rerun |
+
+## Acknowledgments
+
+- Initial inspiration: Author's main project - Reverie's Development Experience (Experience in Collaborating on Projects Across Models)
+
+- Upstream Inspiration: [Open Source Project Large Model Application Analyzer](https://github.com/Guan-Yep/open-source-llm-analyzer) – The four-way prompt word scanning and translation documentation is adapted from howPrompt; tiered coverage, parallel workers, and cross-validation are referenced from repo-analyzer; resident memory/in-transit handoff binary search is inspired by Cline Memory Bank and AI Hero/handoff; strong planning and weak execution are seen in Together AI's plan-divide-conquer. For complete reference mappings, see `reports/creation-handoff.md`.
+
+- Methodology Sources: Suggestions from friends, the author's main project – Reverie's development experience (experience in collaborating on projects across models), and inspiration from [KKKKhazix](https://github.com/KKKKhazix) articles.
+
+- Author: [hoshinohatsuka](https://github.com/hoshinohatsuka) · License: MIT
