@@ -1,5 +1,7 @@
 # Project Handoff Skill (Project Relay)
 
+（[中文](https://github.com/hoshinohatsuka/project-relay-Skill/edit/main/README.md) | [English](https://github.com/hoshinohatsuka/project-relay-Skill/blob/main/readme-EN) ）
+
 This skill allows multiple AIs to work on the same project at different times for various reasons—models may change, context may be lost, AI illusions may become severe, and resources may run out. With the Project Handoff Skill, the executable memories are written to the repository, rather than remaining in the chat box.
 
 One skill, four uses
