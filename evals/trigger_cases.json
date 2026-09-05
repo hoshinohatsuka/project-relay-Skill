@@ -1,0 +1,260 @@
+{
+  "recommended_threshold": 0.34,
+  "description_required_concepts": [
+    "target_project",
+    "teardown_action",
+    "artifact_or_output",
+    "community",
+    "handoff_action",
+    "relay_state"
+  ],
+  "positive_concepts": {
+    "target_project": [
+      "github",
+      "开源项目",
+      "仓库",
+      "repo",
+      "项目",
+      "github.com",
+      "project"
+    ],
+    "teardown_action": [
+      "拆解",
+      "分析",
+      "解剖",
+      "剖析",
+      "teardown",
+      "analyze",
+      "deep dive",
+      "调研",
+      "拆解学习",
+      "源码分析",
+      "架构分析",
+      "extract prompts",
+      "研究"
+    ],
+    "artifact_or_output": [
+      "报告",
+      "模块",
+      "提示词",
+      "prompt",
+      "框架选型",
+      "选型",
+      "学习路径",
+      "汇总",
+      "翻译",
+      "复用",
+      "report",
+      "架构",
+      "框架"
+    ],
+    "community": [
+      "twitter",
+      "推特",
+      "youtube",
+      "huggingface",
+      "hugging face",
+      "stack overflow",
+      "知乎",
+      "小红书",
+      "facebook",
+      "linkedin",
+      "社区",
+      "口碑",
+      "踩坑",
+      "评价"
+    ],
+    "handoff_action": [
+      "接手",
+      "交接",
+      "烂尾",
+      "收尾",
+      "前任",
+      "半成品",
+      "继续开发",
+      "handoff",
+      "take over",
+      "接力",
+      "交棒",
+      "冻结",
+      "交接文档"
+    ],
+    "relay_state": [
+      "checkpoint",
+      "断点",
+      "续跑",
+      "恢复",
+      "接着上次",
+      "上次未完成",
+      "run manifest"
+    ]
+  },
+  "negative_patterns": [
+    "不要拆解",
+    "不要分析",
+    "只解释",
+    "just explain",
+    "翻译一下",
+    "don't analyze",
+    "brainstorm only",
+    "先不要动手"
+  ],
+  "should_trigger": [
+    {
+      "text": "帮我拆解分析一下这个开源项目 https://github.com/mvanhorn/last30days-skill",
+      "family": "cn_github_url"
+    },
+    {
+      "text": "我想学习这个 GitHub 仓库的架构设计和模块划分，它的基准源码参考是什么？",
+      "family": "cn_learn_architecture"
+    },
+    {
+      "text": "拆解这个项目，看看每个需求用了多少个模块、每个模块选了什么框架，为什么这么选",
+      "family": "cn_requirement_module_map"
+    },
+    {
+      "text": "分析这个开源项目的提示词和 Agent 设计，把所有 prompt 翻译成中文",
+      "family": "cn_prompt_extraction"
+    },
+    {
+      "text": "深度剖析这个项目：解耦做得怎么样、有没有性能隐患、代码好不好 review",
+      "family": "cn_decoupling_performance"
+    },
+    {
+      "text": "去 Twitter、知乎、HuggingFace、Stack Overflow 上调研一下大家对这个开源项目的评价和踩坑",
+      "family": "cn_community_research"
+    },
+    {
+      "text": "Analyze this GitHub repo: what baseline source is it built on, how many modules per requirement, and which framework did each module pick?",
+      "family": "en_requirement_module_map"
+    },
+    {
+      "text": "对这个项目做一次完整拆解，最后汇总成一份我能照着学的报告",
+      "family": "cn_full_teardown_report"
+    },
+    {
+      "text": "我想复刻这个项目，先帮我把它拆开学一遍，输出学习路径",
+      "family": "cn_clone_path"
+    },
+    {
+      "text": "Teardown https://github.com/yzddmr6/repo-analyzer and gather community insights from X and YouTube.",
+      "family": "en_community_research"
+    },
+    {
+      "text": "接手这个烂尾项目，前任 AI 留了交接材料，帮我生成接手计划继续开发",
+      "family": "cn_handoff_with_material"
+    },
+    {
+      "text": "项目做了一半，GPT 额度用完了，换个模型接手收尾",
+      "family": "cn_handoff_budget"
+    },
+    {
+      "text": "帮我给这个项目写一份 HANDOFF 交接包，规划好再动工",
+      "family": "cn_handoff_package"
+    },
+    {
+      "text": "Take over this half-finished project and continue with checkpoints.",
+      "family": "en_handoff"
+    },
+    {
+      "text": "继续昨天未完成的拆解，从上次的 checkpoint 恢复",
+      "family": "cn_resume"
+    },
+    {
+      "text": "分析并修复这个仓库的内存泄漏，先讲清楚边界再动手",
+      "family": "cn_mixed_analyze_fix"
+    },
+    {
+      "text": "研究这个项目的历史和为什么选这个框架",
+      "family": "cn_history_and_choice"
+    },
+    {
+      "text": "mvanhorn/last30days-skill 这个仓库帮我拆解一下",
+      "family": "cn_owner_repo_only"
+    },
+    {
+      "text": "帮窝拆解下这个开源项目",
+      "family": "cn_typo_colloquial"
+    },
+    {
+      "text": "接着上次的进度继续拆解这个仓库",
+      "family": "cn_resume_vague"
+    },
+    {
+      "text": "我额度快用完了，用模式C 把这个项目的会话冻结成交接文档",
+      "family": "cn_mode_c_freeze"
+    },
+    {
+      "text": "我要换模型了，把这个项目会话冻结成交接文档交棒给下一个 AI",
+      "family": "cn_mode_c_switch"
+    },
+    {
+      "text": "Freeze this project session into a handoff document for the next agent.",
+      "family": "en_mode_c"
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "text": "解释一下什么是依赖注入，不要分析项目",
+      "family": "explain_only"
+    },
+    {
+      "text": "帮我修复这个本地报错栈",
+      "family": "local_debug"
+    },
+    {
+      "text": "把这段 README 翻译一下",
+      "family": "translate_only"
+    },
+    {
+      "text": "Summarize this file in three bullets, don't analyze the repo.",
+      "family": "en_summary_only"
+    },
+    {
+      "text": "帮我写一个 TODO 应用",
+      "family": "build_something"
+    },
+    {
+      "text": "把我的工作流整理成一个 skill",
+      "family": "skill_authoring"
+    },
+    {
+      "text": "帮我把这个项目发布到 PyPI",
+      "family": "package_publish"
+    }
+  ],
+  "near_neighbor": [
+    {
+      "text": "帮我看下这个函数为什么报错",
+      "family": "local_debug_only"
+    },
+    {
+      "text": "给我推荐几个值得学习的开源项目",
+      "family": "recommend_only"
+    },
+    {
+      "text": "对比一下 Vue 和 React 哪个更好",
+      "family": "generic_compare"
+    },
+    {
+      "text": "只解释这个仓库是干嘛的，先不要拆解",
+      "family": "explain_repo_only"
+    },
+    {
+      "text": "把仓库做成 Skill 应该怎么做",
+      "family": "make_skill"
+    },
+    {
+      "text": "从零开始帮我做一个商城项目，要能注册登录",
+      "family": "greenfield_build"
+    },
+    {
+      "text": "总结一下这次会话我们聊了什么",
+      "family": "session_summary_only"
+    },
+    {
+      "text": "帮我写份本周工作周报",
+      "family": "weekly_report_only"
+    }
+  ]
+}

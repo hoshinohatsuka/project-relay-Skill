@@ -1,0 +1,504 @@
+{
+  "ok": true,
+  "threshold": 0.34,
+  "description_concepts": [
+    "artifact_or_output",
+    "community",
+    "handoff_action",
+    "relay_state",
+    "target_project",
+    "teardown_action"
+  ],
+  "missing_description_concepts": [],
+  "summary": {
+    "total": 38,
+    "passed": 38,
+    "false_positive": 0,
+    "false_negative": 0,
+    "pass_rate": 1.0
+  },
+  "failures": [],
+  "results": {
+    "should_trigger": [
+      {
+        "prompt": "帮我拆解分析一下这个开源项目 https://github.com/mvanhorn/last30days-skill",
+        "family": "cn_github_url",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "我想学习这个 GitHub 仓库的架构设计和模块划分，它的基准源码参考是什么？",
+        "family": "cn_learn_architecture",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "artifact_or_output",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "拆解这个项目，看看每个需求用了多少个模块、每个模块选了什么框架，为什么这么选",
+        "family": "cn_requirement_module_map",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "分析这个开源项目的提示词和 Agent 设计，把所有 prompt 翻译成中文",
+        "family": "cn_prompt_extraction",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "深度剖析这个项目：解耦做得怎么样、有没有性能隐患、代码好不好 review",
+        "family": "cn_decoupling_performance",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "去 Twitter、知乎、HuggingFace、Stack Overflow 上调研一下大家对这个开源项目的评价和踩坑",
+        "family": "cn_community_research",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "community",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Analyze this GitHub repo: what baseline source is it built on, how many modules per requirement, and which framework did each module pick?",
+        "family": "en_requirement_module_map",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "对这个项目做一次完整拆解，最后汇总成一份我能照着学的报告",
+        "family": "cn_full_teardown_report",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "我想复刻这个项目，先帮我把它拆开学一遍，输出学习路径",
+        "family": "cn_clone_path",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "artifact_or_output",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Teardown https://github.com/yzddmr6/repo-analyzer and gather community insights from X and YouTube.",
+        "family": "en_community_research",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "community",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "接手这个烂尾项目，前任 AI 留了交接材料，帮我生成接手计划继续开发",
+        "family": "cn_handoff_with_material",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "项目做了一半，GPT 额度用完了，换个模型接手收尾",
+        "family": "cn_handoff_budget",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我给这个项目写一份 HANDOFF 交接包，规划好再动工",
+        "family": "cn_handoff_package",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Take over this half-finished project and continue with checkpoints.",
+        "family": "en_handoff",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "继续昨天未完成的拆解，从上次的 checkpoint 恢复",
+        "family": "cn_resume",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "relay_state",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "分析并修复这个仓库的内存泄漏，先讲清楚边界再动手",
+        "family": "cn_mixed_analyze_fix",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "研究这个项目的历史和为什么选这个框架",
+        "family": "cn_history_and_choice",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "mvanhorn/last30days-skill 这个仓库帮我拆解一下",
+        "family": "cn_owner_repo_only",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮窝拆解下这个开源项目",
+        "family": "cn_typo_colloquial",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "接着上次的进度继续拆解这个仓库",
+        "family": "cn_resume_vague",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "relay_state",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "我额度快用完了，用模式C 把这个项目的会话冻结成交接文档",
+        "family": "cn_mode_c_freeze",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "我要换模型了，把这个项目会话冻结成交接文档交棒给下一个 AI",
+        "family": "cn_mode_c_switch",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Freeze this project session into a handoff document for the next agent.",
+        "family": "en_mode_c",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "should_not_trigger": [
+      {
+        "prompt": "解释一下什么是依赖注入，不要分析项目",
+        "family": "explain_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": "不要分析"
+      },
+      {
+        "prompt": "帮我修复这个本地报错栈",
+        "family": "local_debug",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这段 README 翻译一下",
+        "family": "translate_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "artifact_or_output"
+        ],
+        "negative_pattern": "翻译一下"
+      },
+      {
+        "prompt": "Summarize this file in three bullets, don't analyze the repo.",
+        "family": "en_summary_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": "don't analyze"
+      },
+      {
+        "prompt": "帮我写一个 TODO 应用",
+        "family": "build_something",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把我的工作流整理成一个 skill",
+        "family": "skill_authoring",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我把这个项目发布到 PyPI",
+        "family": "package_publish",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "near_neighbor": [
+      {
+        "prompt": "帮我看下这个函数为什么报错",
+        "family": "local_debug_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "给我推荐几个值得学习的开源项目",
+        "family": "recommend_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "对比一下 Vue 和 React 哪个更好",
+        "family": "generic_compare",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "只解释这个仓库是干嘛的，先不要拆解",
+        "family": "explain_repo_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": "不要拆解"
+      },
+      {
+        "prompt": "把仓库做成 Skill 应该怎么做",
+        "family": "make_skill",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "从零开始帮我做一个商城项目，要能注册登录",
+        "family": "greenfield_build",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "总结一下这次会话我们聊了什么",
+        "family": "session_summary_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我写份本周工作周报",
+        "family": "weekly_report_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      }
+    ]
+  }
+}

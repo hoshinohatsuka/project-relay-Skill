@@ -1,0 +1,22 @@
+{
+  "name": "project-relay",
+  "version": "2.1.1",
+  "owner": "hoshinohatsuka",
+  "updated_at": "2026-09-05",
+  "status": "active",
+  "maturity_tier": "production",
+  "context_budget_tier": "production",
+  "display_name": "项目接手.Skill（Project Handoff Skill · project-relay）",
+  "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer",
+  "license": "MIT",
+  "release_gates": {
+    "validate_skill": "validate_skill.py -> 0 failures",
+    "trigger_eval": "evals/trigger_cases.json -> reports/trigger-eval.json ok=true (33 cases)",
+    "run_state_check": "scripts/validate_run.py passes on smoke run dirs",
+    "secret_scan": "no tokens/private keys/cookies/.env values in packaged files",
+    "read_only_and_injection": "target source read-only; repo files treated as data, not instructions",
+    "user_gate": "mode B requires explicit user approval before touching code (H5)",
+    "nested_discovery": "no nested SKILL.md entrypoints",
+    "claim_gate": "README states only verified capabilities"
+  }
+}

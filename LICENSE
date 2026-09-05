@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 星野初夏
+Copyright (c) 2026 hoshinohatsuka
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11,6 +11,11 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+Attribution: this skill adapts ideas from "open-source-llm-analyzer" by
+Guan-Yep (https://github.com/Guan-Yep/open-source-llm-analyzer, MIT), which in
+turn derives from howPrompt by comeonzhj, and draws design inspiration from
+"repo-analyzer" by yzddmr6 (https://github.com/yzddmr6/repo-analyzer, MIT).
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

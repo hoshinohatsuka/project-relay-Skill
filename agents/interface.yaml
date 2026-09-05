@@ -1,0 +1,38 @@
+interface:
+  display_name: 项目接手.Skill（Project Handoff Skill · project-relay）
+  short_description: 模式A 深度拆解 GitHub 开源项目并产出可学习复用的中文报告；模式B 接手前任 AI 留下的半成品项目——独立侦察、真相层级仲裁、.ai/ 交接包、检查点执行；支持断点续跑。
+  default_prompt: 帮我拆解分析这个开源项目 https://github.com/<owner>/<repo>，按标准档位输出学习报告。
+  modes:
+    - id: teardown
+      label: 模式A 拆解学习
+      input: GitHub URL / owner/repo / 本地路径（+档位 quick|standard|deep，+focus 关注点）
+      output: oss-teardown/<run-id>/（黑板状态 + notes/ + LEARNING_REPORT.md）
+    - id: handoff
+      label: 模式B 项目接手
+      input: 半成品项目路径（+可选交接材料+剩余需求）
+      output: 项目 .ai/ 交接包（七件套+ASSUMPTIONS+checkpoints），经用户门禁后执行收尾
+    - id: freeze
+      label: 模式C 交棒冻结
+      input: 当前会话 + 目标项目路径（用户说额度不足/要换模型）
+      output: .ai/handoffs/HANDOFF-<主题>-<日期>.md 权威交接文档（红线/状态表/根因明细/待办/防重探事实/测试基线/无技能接手附录）+ .ai/HANDOFF.md 指针更新
+    - id: resume
+      label: 断点续跑
+      input: "继续上次未完成的拆解"
+      output: 从 run-manifest/checkpoint 恢复并继续
+compatibility:
+  adapter_targets:
+    - openai
+    - claude
+    - generic
+    - agent-skills-compatible
+  required_tools:
+    - bash/git
+    - file read/grep/glob
+    - web search（社区调研，缺失时降级为 missing evidence）
+safety:
+  target_source: read-only      # 禁止执行/构建/安装目标代码、submodule、LFS、加载目标 .env
+  injection_defense: repo-files-as-data
+  fs_boundary: output-root-only
+  secrets: redacted
+  mode_b_code_changes: user-gated  # H5 未批准不动代码；变更禁区默认封闭
+  citation: required

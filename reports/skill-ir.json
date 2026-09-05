@@ -1,0 +1,122 @@
+{
+  "schema_version": "2.0.0-qiaomu-lite",
+  "generated_at": "2026-09-06",
+  "package": {
+    "name": "project-relay",
+    "version": "2.1.1",
+    "owner": "hoshinohatsuka",
+    "maturity_tier": "production",
+    "lifecycle_stage": null,
+    "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer",
+    "upstream_sync": {}
+  },
+  "intent": {
+    "description": "项目接手.Skill（project-relay）：让多个 AI 在不同时间段接力打磨同一个项目——模型会换、上下文会丢、额度会用完，可执行记忆写进仓库而不在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、每模块框架选型分级、解耦与性能证据、四路提示词扫描与翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研，汇总为带学习路径的中文报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经用户批准后按 Correctness>Completeness>Maintainability>Performance 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线），写在磁盘上让任何下一个 AI——无论是否安装本技能——都能接手（交棒/写交接文档/冻结交接）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。",
+    "job_to_be_done": "项目接手.Skill（project-relay）：让多个 AI 在不同时间段接力打磨同一个项目——模型会换、上下文会丢、额度会用完，可执行记忆写进仓库而不在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、每模块框架选型分级、解耦与性能证据、四路提示词扫描与翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研，汇总为带学习路径的中文报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经用户批准后按 Correctness>Completeness>Maintainability>Performance 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线），写在磁盘上让任何下一个 AI——无论是否安装本技能——都能接手（交棒/写交接文档/冻结交接）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。",
+    "target_users": [
+      "Qiaomu operator"
+    ],
+    "inputs": [],
+    "outputs": [],
+    "exclusions": [],
+    "qiaomu_defaults": {}
+  },
+  "triggers": {
+    "should_trigger": [
+      "帮我拆解分析一下这个开源项目 https://github.com/mvanhorn/last30days-skill",
+      "我想学习这个 GitHub 仓库的架构设计和模块划分，它的基准源码参考是什么？",
+      "拆解这个项目，看看每个需求用了多少个模块、每个模块选了什么框架，为什么这么选",
+      "分析这个开源项目的提示词和 Agent 设计，把所有 prompt 翻译成中文",
+      "深度剖析这个项目：解耦做得怎么样、有没有性能隐患、代码好不好 review",
+      "去 Twitter、知乎、HuggingFace、Stack Overflow 上调研一下大家对这个开源项目的评价和踩坑",
+      "Analyze this GitHub repo: what baseline source is it built on, how many modules per requirement, and which framework did each module pick?",
+      "对这个项目做一次完整拆解，最后汇总成一份我能照着学的报告",
+      "我想复刻这个项目，先帮我把它拆开学一遍，输出学习路径",
+      "Teardown https://github.com/yzddmr6/repo-analyzer and gather community insights from X and YouTube.",
+      "接手这个烂尾项目，前任 AI 留了交接材料，帮我生成接手计划继续开发",
+      "项目做了一半，GPT 额度用完了，换个模型接手收尾",
+      "帮我给这个项目写一份 HANDOFF 交接包，规划好再动工",
+      "Take over this half-finished project and continue with checkpoints.",
+      "继续昨天未完成的拆解，从上次的 checkpoint 恢复",
+      "分析并修复这个仓库的内存泄漏，先讲清楚边界再动手",
+      "研究这个项目的历史和为什么选这个框架",
+      "mvanhorn/last30days-skill 这个仓库帮我拆解一下",
+      "帮窝拆解下这个开源项目",
+      "接着上次的进度继续拆解这个仓库",
+      "我额度快用完了，用模式C 把这个项目的会话冻结成交接文档",
+      "我要换模型了，把这个项目会话冻结成交接文档交棒给下一个 AI",
+      "Freeze this project session into a handoff document for the next agent."
+    ],
+    "should_not_trigger": [
+      "解释一下什么是依赖注入，不要分析项目",
+      "帮我修复这个本地报错栈",
+      "把这段 README 翻译一下",
+      "Summarize this file in three bullets, don't analyze the repo.",
+      "帮我写一个 TODO 应用",
+      "把我的工作流整理成一个 skill",
+      "帮我把这个项目发布到 PyPI"
+    ],
+    "near_neighbor": [
+      "帮我看下这个函数为什么报错",
+      "给我推荐几个值得学习的开源项目",
+      "对比一下 Vue 和 React 哪个更好",
+      "只解释这个仓库是干嘛的，先不要拆解",
+      "把仓库做成 Skill 应该怎么做",
+      "从零开始帮我做一个商城项目，要能注册登录",
+      "总结一下这次会话我们聊了什么",
+      "帮我写份本周工作周报"
+    ]
+  },
+  "workflow": {
+    "router_rules": [],
+    "compact_workflow": [],
+    "gate_ladder": [],
+    "output_contract": []
+  },
+  "resources": {
+    "references": [
+      "references\\community-research.md",
+      "references\\handoff-guide.md",
+      "references\\multi-agent-handoff.md",
+      "references\\relay-principles.md",
+      "references\\teardown-guide.md",
+      "references\\templates.md",
+      "references\\workflow-detail.md"
+    ],
+    "scripts": [
+      "scripts\\validate_run.py"
+    ],
+    "evals": [
+      "evals\\trigger_cases.json"
+    ],
+    "reports": [
+      "reports\\creation-handoff.md",
+      "reports\\iteration-2026-09-05-v2.0.0.md",
+      "reports\\iteration-2026-09-06-v2.1.0.md",
+      "reports\\prior-art-research.md",
+      "reports\\skill-ir.json",
+      "reports\\trigger-eval.json"
+    ]
+  },
+  "portability": {
+    "canonical_format": null,
+    "adapter_targets": [
+      "openai",
+      "claude",
+      "generic",
+      "agent-skills-compatible"
+    ],
+    "activation": {},
+    "execution": {},
+    "trust": {},
+    "permissions": {},
+    "degradation": {}
+  },
+  "gates": {},
+  "evidence_boundary": {
+    "generated_reports_are_evidence": true,
+    "planned_work_is_evidence": false,
+    "missing_external_or_human_evidence_label": "missing evidence",
+    "public_claim_policy": "claim only what local validation, install proof, human review, or provider-backed evidence actually supports"
+  }
+}
