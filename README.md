@@ -1,5 +1,7 @@
 # 项目接手.Skill（Project Handoff Skill · `project-relay`）
 
+（[中文](https://github.com/hoshinohatsuka/project-relay-Skill/edit/main/README.md) | [English](https://github.com/hoshinohatsuka/project-relay-Skill/blob/main/readme-EN) ）
+
 让多个 AI 在不同时间段因不同原因接力打磨同一个项目——模型会换、上下文会丢、AI幻觉会严重、额度会用完，用项目接手.Skill，可执行记忆写进仓库，而不是留在聊天框里。
 
 一个技能，四种用法
