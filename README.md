@@ -8,7 +8,7 @@
 
 | 模式 Mode | 什么时候用 When | 产出 Output |
 |---|---|---|
-| **A 拆解学习** Teardown & Learn | 给它一个 GitHub 项目，要求拆解/分析/学习 | `oss-teardown/<run-id>/`：基线测绘、需求→模块映射、选型矩阵（证据分级）、解耦与性能证据、提示词翻译、结构化社区调研、`LEARNING_REPORT.md`（含学习路径） |
+| **A 拆解学习** Teardown & Learn | 给它一个 开源项目，要求拆解/分析/学习 | `oss-teardown/<run-id>/`：基线测绘、需求→模块映射、选型矩阵（证据分级）、解耦与性能证据、提示词翻译、结构化社区调研、`LEARNING_REPORT.md`（含学习路径） |
 | **B 项目接手** Handoff (take over) | 接手前任 AI 或他人留下的半成品/烂尾项目 | 项目 `.ai/` 交接包（PROJECT_STATE / REQUIREMENTS / ARCHITECTURE / DECISIONS / TODO / TEST_PLAN / HANDOFF / ASSUMPTIONS / checkpoints），经你批准后按 `Correctness > Completeness > Maintainability > Performance` 纪律与 git 检查点动工 |
 | **C 交棒冻结** Freeze & hand off | 额度快用完、要换模型——由**当前离场 AI** 执行 | `.ai/handoffs/HANDOFF-<主题>-<日期>.md` 权威交接文档：红线置顶、状态表、已完成根因明细、待办批次（含已探明的坑）、防重探架构事实、测试基线、无技能接手附录 |
 | **断点续跑** Resume | "继续上次未完成的拆解" | 从 `run-manifest.json` / checkpoint 恢复，不从头重跑 |
