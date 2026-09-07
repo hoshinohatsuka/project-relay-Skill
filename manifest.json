@@ -6,7 +6,7 @@
   "status": "active",
   "maturity_tier": "production",
   "context_budget_tier": "production",
-  "display_name": "项目接手.Skill（Project Handoff Skill · project-relay）",
+  "display_name": "Project Relay",
   "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer",
   "license": "MIT",
   "release_gates": {
