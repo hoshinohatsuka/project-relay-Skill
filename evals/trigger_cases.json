@@ -1,5 +1,5 @@
 {
-  "recommended_threshold": 0.34,
+  "recommended_threshold": 0.3333333333333333,
   "description_required_concepts": [
     "target_project",
     "teardown_action",

@@ -1,9 +1,9 @@
 ---
 name: project-relay
-description: 项目接手.Skill（project-relay）：让多个 AI 在不同时间段接力打磨同一个项目——模型会换、上下文会丢、额度会用完，可执行记忆写进仓库而不在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、每模块框架选型分级、解耦与性能证据、四路提示词扫描与翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研，汇总为带学习路径的中文报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经用户批准后按 Correctness>Completeness>Maintainability>Performance 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线），写在磁盘上让任何下一个 AI——无论是否安装本技能——都能接手（交棒/写交接文档/冻结交接）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。
+description: 项目接手工作流 Skill（project-relay）：为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的可审计操作协议，把状态与证据写进仓库而不留在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、每模块框架选型分级、解耦与性能证据、四路提示词扫描与翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研，汇总为带学习路径的中文报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经用户批准后按 Correctness>Completeness>Maintainability>Performance 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线），写在磁盘上供下一个 AI 接手（交棒/写交接文档/冻结交接）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。
 metadata:
   author: hoshinohatsuka
-  version: "2.1.0"
+  version: "2.2.0"
   upstream_inspiration: Guan-Yep/open-source-llm-analyzer; comeonzhj/howPrompt; yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer
   license: MIT
 ---

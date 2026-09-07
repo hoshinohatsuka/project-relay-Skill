@@ -1,0 +1,9 @@
+{
+  "ok": false,
+  "run_id": "fixture-escape-001",
+  "schema_version": "2.0",
+  "evidence_count": 1,
+  "errors": [
+    "task T-001: output_path escapes run root: ../escape.md"
+  ]
+}

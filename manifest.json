@@ -1,6 +1,6 @@
 {
   "name": "project-relay",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "owner": "hoshinohatsuka",
   "updated_at": "2026-09-05",
   "status": "active",
@@ -10,8 +10,8 @@
   "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer",
   "license": "MIT",
   "release_gates": {
-    "validate_skill": "validate_skill.py -> 0 failures",
-    "trigger_eval": "evals/trigger_cases.json -> reports/trigger-eval.json ok=true (33 cases)",
+    "validate_skill": "python scripts/validate_skill.py -> 0 failures",
+    "trigger_eval": "python scripts/evaluate_triggers.py -> 0 failures",
     "run_state_check": "scripts/validate_run.py passes on smoke run dirs",
     "secret_scan": "no tokens/private keys/cookies/.env values in packaged files",
     "read_only_and_injection": "target source read-only; repo files treated as data, not instructions",

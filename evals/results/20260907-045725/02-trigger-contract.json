@@ -1,0 +1,629 @@
+{
+  "ok": false,
+  "threshold": 0.34,
+  "total": 38,
+  "passed": 23,
+  "failures": [
+    {
+      "family": "cn_github_url",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_learn_architecture",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_decoupling_performance",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "en_requirement_module_map",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_clone_path",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_handoff_with_material",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_handoff_budget",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_handoff_package",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_resume",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "relay_state",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_mixed_analyze_fix",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_owner_repo_only",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_typo_colloquial",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_mode_c_freeze",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_mode_c_switch",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "en_mode_c",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    }
+  ],
+  "results": [
+    {
+      "family": "cn_github_url",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_learn_architecture",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_requirement_module_map",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_prompt_extraction",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_decoupling_performance",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_community_research",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "community",
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "en_requirement_module_map",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_full_teardown_report",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_clone_path",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "en_community_research",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "community",
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_handoff_with_material",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_handoff_budget",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_handoff_package",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "en_handoff",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "handoff_action",
+        "relay_state",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_resume",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "relay_state",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_mixed_analyze_fix",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_history_and_choice",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "artifact_or_output",
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_owner_repo_only",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_typo_colloquial",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_resume_vague",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "score": 0.5,
+      "matched_concepts": [
+        "relay_state",
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_mode_c_freeze",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "cn_mode_c_switch",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "en_mode_c",
+      "expected_trigger": true,
+      "predicted_trigger": false,
+      "passed": false,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "handoff_action",
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "explain_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": "不要分析"
+    },
+    {
+      "family": "local_debug",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.0,
+      "matched_concepts": [],
+      "negative_pattern": null
+    },
+    {
+      "family": "translate_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.16666666666666666,
+      "matched_concepts": [
+        "artifact_or_output"
+      ],
+      "negative_pattern": "翻译一下"
+    },
+    {
+      "family": "en_summary_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": "don't analyze"
+    },
+    {
+      "family": "build_something",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.0,
+      "matched_concepts": [],
+      "negative_pattern": null
+    },
+    {
+      "family": "skill_authoring",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.0,
+      "matched_concepts": [],
+      "negative_pattern": null
+    },
+    {
+      "family": "package_publish",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.16666666666666666,
+      "matched_concepts": [
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "local_debug_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.0,
+      "matched_concepts": [],
+      "negative_pattern": null
+    },
+    {
+      "family": "recommend_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.16666666666666666,
+      "matched_concepts": [
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "generic_compare",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.0,
+      "matched_concepts": [],
+      "negative_pattern": null
+    },
+    {
+      "family": "explain_repo_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.3333333333333333,
+      "matched_concepts": [
+        "target_project",
+        "teardown_action"
+      ],
+      "negative_pattern": "不要拆解"
+    },
+    {
+      "family": "make_skill",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.16666666666666666,
+      "matched_concepts": [
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "greenfield_build",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.16666666666666666,
+      "matched_concepts": [
+        "target_project"
+      ],
+      "negative_pattern": null
+    },
+    {
+      "family": "session_summary_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.0,
+      "matched_concepts": [],
+      "negative_pattern": null
+    },
+    {
+      "family": "weekly_report_only",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "score": 0.0,
+      "matched_concepts": [],
+      "negative_pattern": null
+    }
+  ],
+  "scope": "lexical contract only; host routing is not evaluated"
+}

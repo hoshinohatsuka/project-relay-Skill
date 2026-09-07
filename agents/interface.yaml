@@ -1,6 +1,6 @@
 interface:
   display_name: 项目接手.Skill（Project Handoff Skill · project-relay）
-  short_description: 模式A 深度拆解 GitHub 开源项目并产出可学习复用的中文报告；模式B 接手前任 AI 留下的半成品项目——独立侦察、真相层级仲裁、.ai/ 交接包、检查点执行；支持断点续跑。
+  short_description: 为 Agent 提供模式A 拆解学习、模式B 项目接手、模式C 交棒冻结与断点续跑的操作协议，并要求持久化状态和证据；实际执行质量取决于宿主和模型。
   default_prompt: 帮我拆解分析这个开源项目 https://github.com/<owner>/<repo>，按标准档位输出学习报告。
   modes:
     - id: teardown
