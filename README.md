@@ -83,7 +83,7 @@ mkdir -p ~/.agents/skills && cp -r project-relay ~/.agents/skills/
 | 想重新拆（行号已漂移） | 旧证据绑定旧 commit SHA；新建 run-id 重跑 |
 
 ## 致谢
-- 初始灵感：作者主项目 - Reverie的开发经验（跨模型共同打磨项目的经验）
+- 初始灵感：作者主项目 - [Reverie](https://github.com/MuheStudio/Reverie) 的开发经验（跨模型共同打磨项目的经验）
 - 上游灵感： [开源项目大模型应用分析器](https://github.com/Guan-Yep/open-source-llm-analyzer) —— 四路提示词扫描与翻译文档化改编自 howPrompt 系；档位化覆盖率、并行 Worker 与交叉验证参考 repo-analyzer；常驻记忆/在途交接二分借鉴 Cline Memory Bank 与 AI Hero /handoff；强规划弱执行见 Together AI 的 plan-divide-conquer。完整借鉴映射见 `reports/creation-handoff.md`。
-- 方法论来源：作者受朋友们的建议、作者主项目 - Reverie 的开发经验（跨模型共同打磨项目的经验）、[卡兹克老师](https://github.com/KKKKhazix)的文章灵感。
+- 方法论来源：作者受朋友们的建议、作者主项目 - [Reverie](https://github.com/MuheStudio/Reverie) 的开发经验（跨模型共同打磨项目的经验）、[卡兹克老师](https://github.com/KKKKhazix)的文章灵感。
 - 作者 ：[hoshinohatsuka](https://github.com/hoshinohatsuka) · License: MIT
