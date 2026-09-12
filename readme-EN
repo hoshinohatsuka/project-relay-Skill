@@ -85,9 +85,9 @@ Prerequisites: `git` is available; Agent has Bash/file read/write/Grep/Glob perm
 
 ## Verified vs. Unverified
 
-Verified (Author's Local Test): Trigger evaluation 38/38; Package verification 0 failures; Blackboard status verification script positive and negative examples; Handover mode includes predecessor error declaration arbitration; C→B loop (automatic discovery of handover documents/error arbitration/red line binding/stopping at H5 access control); Non-LLM projects P5 correctly skips.
+Verified (reproducible commands are in `evals/EVALUATION_PLAN.md`): package integrity, trigger-contract evaluation, positive and negative blackboard-state fixtures, and manual review rubrics for all four workflows. These prove file, deterministic routing-contract, and state-artifact structure. They do not prove host auto-routing or literal compliance by every model.
 
-Unverified (missing evidence): Performance of deep files in large-scale repositories (>500 modules); Community recall rate on login firewall platforms.
+Unverified (missing evidence): real host auto-routing; end-to-end adherence by a real model in modes A, B, C, and resume; performance of deep files in large-scale repositories (>500 modules); community recall rate on login firewall platforms.
 
 ## Troubleshooting
 

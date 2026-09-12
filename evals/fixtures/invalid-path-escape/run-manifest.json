@@ -1,0 +1,1 @@
+{"schema_version":"2.0","skill_version":"2.2.0","run_id":"fixture-escape-001","mode":"teardown","target":{"url":"https://example.invalid/safe/repo","commit_sha":"0123456789abcdef0123456789abcdef01234567"},"tier":"standard","status":"interrupted"}

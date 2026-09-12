@@ -1,0 +1,21 @@
+{
+  "expected": {
+    "trigger_contract": 0,
+    "valid_run": 0,
+    "invalid_path_escape": 2,
+    "validate_skill": 0
+  },
+  "commands": [
+    "python scripts/validate_skill.py",
+    "python scripts/evaluate_triggers.py",
+    "python scripts/validate_run.py evals/fixtures/valid-standard-run",
+    "python scripts/validate_run.py evals/fixtures/invalid-path-escape"
+  ],
+  "timestamp": "2026-09-07T11:57:58.8920251Z",
+  "exits": {
+    "trigger_contract": 0,
+    "valid_run": 0,
+    "invalid_path_escape": 2,
+    "validate_skill": 0
+  }
+}

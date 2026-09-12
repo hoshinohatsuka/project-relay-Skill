@@ -2,7 +2,7 @@
 
 （[中文](https://github.com/hoshinohatsuka/project-relay-Skill/edit/main/README.md) | [English](https://github.com/hoshinohatsuka/project-relay-Skill/blob/main/readme-EN) ）
 
-让多个 AI 在不同时间段因不同原因接力打磨同一个项目——模型会换、上下文会丢、AI幻觉会严重、额度会用完，用项目接手.Skill，可执行记忆写进仓库，而不是留在聊天框里。
+为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的操作协议。它引导 Agent 将状态与可核验证据写进仓库，而不是留在聊天框里；实际执行质量仍取决于所用的宿主和模型。
 
 一个技能，四种用法
 
@@ -67,9 +67,9 @@ mkdir -p ~/.agents/skills && cp -r project-relay ~/.agents/skills/
 
 ## 已验证与未验证
 
-已验证（作者本地实测）：触发评测 38/38；包校验 0 失败；黑板状态校验脚本正反例；接手模式含前任错误声明仲裁；C→B 回路（交接文档自动发现/错误仲裁/红线绑定/停在 H5 门禁）；非 LLM 项目 P5 正确跳过。
+已验证（可复现命令见 `evals/EVALUATION_PLAN.md`）：包完整性校验、触发合同评测、黑板状态校验的正反例，以及四种工作流的人工审查量表。它们证明技能文件、确定性路由合同和状态产物的结构，不证明宿主会自动触发或任意模型会逐字遵守流程。
 
-未验证（missing evidence）：大规模仓库（>500 模块）深度档表现；登录墙平台的社区召回率。
+未验证（missing evidence）：真实宿主自动触发；真实模型在模式 A、B、C 和续跑中的端到端遵从性；大规模仓库（>500 模块）深度档表现；登录墙平台的社区召回率。
 
 ## 故障排查
 
