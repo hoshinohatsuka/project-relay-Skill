@@ -1,9 +1,9 @@
 ---
 name: project-relay
-description: 项目接手工作流 Skill（project-relay）：为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的可审计操作协议，把状态与证据写进仓库而不留在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、框架选型分级、解耦与性能证据、四路提示词扫描翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研与学习报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经批准后按 C>C>M>P 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、根因明细、待办批次、防重探事实、测试基线），写在磁盘上供下一个 AI 接手（交棒/写交接文档/冻结交接）。模式D 借鉴计划：给出『用户自己的项目』与『想借鉴的参考项目』双目标（借鉴/参考学习/抄作业/仿照/把 X 的架构·设计用到我的项目），先锚定角色再独立双线扫描，对比差异出借鉴点清单（来源 SHA+file:line→落点），经许可证对比与"借代码 vs 仅借设计"门禁后出可执行计划，可接模式B。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。
+description: 项目接手工作流 Skill（project-relay）：为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的可审计操作协议，把状态与证据写进仓库而不留在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、框架选型分级、解耦与性能证据、四路提示词扫描翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研与学习报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经批准后按 C>C>M>P 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、根因明细、待办批次、防重探事实、测试基线），写在磁盘上供下一个 AI 接手（交棒/写交接文档/冻结交接）。模式D 借鉴计划：给出『用户自己的项目』与『想借鉴的参考项目』双目标（借鉴/参考学习/抄作业/仿照/把 X 的架构·设计用到我的项目），先锚定角色再独立双线扫描，对比差异出借鉴点清单（来源 SHA+file:line→落点），经许可证对比与"借代码 vs 仅借设计"门禁后出可执行计划，可接模式B。模式E 教学模式：单目标项目 + 学习意图（教学模式/学习计划/学习路径/入门/小白/教程/怎么上手/想学会/教我看），面向小白把拆解引擎编排成教学课程——分阶段学习地图、前置知识清单、鲜活例子走读、第一性原理/对抗式/墨菲三清单引导思考、举一反三练习（只给提示不代答），产出 LEARNING_PATH.md（要深度报告可切模式A）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。
 metadata:
   author: hoshinohatsuka
-  version: "3.0.0"
+  version: "3.1.0"
   upstream_inspiration: Guan-Yep/open-source-llm-analyzer; comeonzhj/howPrompt; yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer
   license: MIT
 ---
@@ -18,6 +18,7 @@ metadata:
 | B 项目接手 | 半成品项目路径（+可选交接材料） | .ai/ 交接包 + 验收完成的收尾（做完它） |
 | C 交棒冻结 | 当前会话 + "额度不足/要换模型" | 权威交接文档（把它交给下一个 AI） |
 | D 借鉴计划 | 用户自己的项目 + 想借鉴的参考项目（双目标） | BORROWING_PLAN.md（借到它） |
+| E 教学模式 | 单目标项目 + 学习意图（面向小白） | LEARNING_PATH.md（学会它） |
 
 ## 八条不变量（每条都可被审计）
 
@@ -36,6 +37,7 @@ metadata:
 - **模式B**：接手、收尾、继续开发有历史的项目；提到前任 AI、交接材料、烂尾、半成品。
 - **模式C**：用户说额度快用完、要换模型/工具，要求写交接文档、冻结交接、交棒——由**当前离场 AI**把会话工作固化成文档。
 - **模式D**：**双目标**（用户自己的项目 + 想借鉴的参考项目）+ 借鉴/借/参考学习/抄作业/仿照/把 X 的架构·设计·框架用到我的项目意图。
+- **模式E**：**单目标** + 教学模式/学习计划/学习路径/入门/小白/教程/怎么上手/想学会/教我看——面向小白的教学编排（引擎同 A，输出是课程不是报告）。
 - **续跑**："继续上次/昨天未完成的拆解"→ 读 run 目录的 `run-manifest.json` 从最近 checkpoint 恢复。
 - **不触发**：从零新建项目、泛泛问答、纯翻译、普通会话总结或周报、技能创建安装（让位 skill-creator/skill-installer）。
 - 修 bug / 改目标项目属普通开发任务；但"分析并修复"可先走 A 的 P1–P4 再转普通开发，边界要在回复里说明。
@@ -97,6 +99,21 @@ metadata:
 
 细节：[borrow-plan.md](references/borrow-plan.md)、[community-research.md](references/community-research.md)、[templates.md](references/templates.md) 模板 14–16。
 
+## 模式E：教学模式（E0–E7，面向小白）
+
+模式A 产"分析报告"（给开发者）；模式E 把**同一分析引擎**重新编排成"课程"（给小白）——回答"我按什么顺序、用什么例子、做什么练习才能学会它"。差异在教学编排（分阶段路径、鲜活例子、三思维清单、举一反三），不是分析深度。
+
+- **E0 目标确认（硬门禁）**：确认项目地址（本地/链接，缺失**先问**，不猜——二者取一，都有更好）；确认学习者水平（**默认小白**，可调入门/进阶）；确认学习目标（语言/架构/产品思路/全部，默认全部）。
+- **E1 教学化侦察**：复用 P1–P3，产出依赖序（"要理解 B 必须先理解 A"），为学习地图铺路。
+- **E2 学习地图（核心）**：分阶段路径（30 分钟认识项目 → 2 小时核心链路 → 1 天一个模块 → 1 周复刻子集）；每阶段：**前置知识清单**（语言/框架/去哪补）、要读文件（file:line）、**鲜活例子**（真实代码最小样例走读——学习不死磕书本）。
+- **E3 三思维清单（教学法，每条必绑项目证据 file:line，引导用户反思、不代答）**：**第一性原理清单**（项目真正解决的底层问题→为什么这样设计）、**对抗式审查清单**（故意让项目失败从哪攻击→引导用户自己举例）、**墨菲清单**（最可能在何时炸→怎么防护）。
+- **E4 举一反三练习**：Use→Modify→Debug→Create→Compare 阶梯，标准 8–12 / 快速 3–5；**只给提示与验收标准**，答案由用户在自己 IDE 产出。
+- **E5 社区学习调研**：复用 P6 九平台，补 "`<项目>` tutorial / 入门 / 踩坑" 查询。
+- **E6 解耦 + review/性能思维教学**：学习资料整理成可 review 结构（接口/依赖/可测试性）；教"怎么看项目卡不卡、从哪入手"（区分风险/假设/benchmark，不运行目标代码）。
+- **E7 汇总**：`LEARNING_PATH.md`（模板 17）：小白向 TL;DR、学习地图（checkbox）、前置清单、鲜活例子索引、三清单、练习、社区资源、覆盖率与未分析范围、**切模式A 入口**。
+
+细节：[learning-plan.md](references/learning-plan.md)、[community-research.md](references/community-research.md)、[templates.md](references/templates.md) 模板 17–18。
+
 ## 跨时段黑板协议（摘要）
 
 所有跨阶段/跨 Agent 状态只通过 run 目录内文件交换，Agent 之间不靠聊天转述大段内容：
@@ -130,7 +147,7 @@ oss-teardown/<run-id>/
 
 ## 资源预算
 
-SKILL.md 预算 ≤25,000 字节（生产档，声明于 manifest `context_budget_bytes`——1M 上下文时代放宽，正文可保持自足，超 25K 的内容仍下沉 references）。仓库文件数（跳过二进制/vendor/node_modules/模型权重/数据库转储）、单文件读取上限、社区查询数（4/12/24）、并行 Agent 数（1/≤3/3–5）、每任务重试≤2、证据不足即降档——全部透明记录在 run-manifest。
+SKILL.md 预算 ≤25,000 字节（1M 上下文时代可略超——以精确性优先；超限内容仍优先下沉 references；声明于 manifest `context_budget_bytes`）。仓库文件数（跳过二进制/vendor/node_modules/模型权重/数据库转储）、单文件读取上限、社区查询数（4/12/24）、并行 Agent 数（1/≤3/3–5）、每任务重试≤2、证据不足即降档——全部透明记录在 run-manifest。
 
 ## 失败模式速查
 
@@ -146,12 +163,15 @@ SKILL.md 预算 ≤25,000 字节（生产档，声明于 manifest `context_budge
 | 模式D 只给一个项目 | D0 双目标缺失 | 停下追问，不猜 |
 | 模式D 角色锚定反转 | 双项目登记表 + 产物头 | D0 未锚定前不启动任何引擎 |
 | 模式D 许可证缺失/矛盾 | check_license.py 结构检测 | 升级用户 + 仅理念借鉴继续 |
+| 模式E 地址缺失 | E0 询问 | 本地/链接二者取一，不猜 |
+| 模式E 练习代答 | 输出审查 | 只给提示；反馈限"会不会破坏 X" |
 
 ## 资源索引
 
 - 接力原理与设计公理：[references/relay-principles.md](references/relay-principles.md)
 - 接手协议与交接包规格：[references/handoff-guide.md](references/handoff-guide.md)
 - 借鉴计划（模式D）细则：[references/borrow-plan.md](references/borrow-plan.md)
+- 教学模式（模式E）细则：[references/learning-plan.md](references/learning-plan.md)
 - 多 Agent 黑板/租约/冲突/恢复细则：[references/multi-agent-handoff.md](references/multi-agent-handoff.md)
 - 模式A 操作细节与四路扫描：[references/workflow-detail.md](references/workflow-detail.md) · [references/teardown-guide.md](references/teardown-guide.md) · [references/community-research.md](references/community-research.md)
 - 全部产出模板：[references/templates.md](references/templates.md)

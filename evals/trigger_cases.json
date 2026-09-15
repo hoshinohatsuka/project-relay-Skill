@@ -7,7 +7,8 @@
     "community",
     "handoff_action",
     "relay_state",
-    "borrow_action"
+    "borrow_action",
+    "learning_action"
   ],
   "positive_concepts": {
     "target_project": [
@@ -102,6 +103,20 @@
       "用到我的项目",
       "迁移到我的",
       "模式D"
+    ],
+    "learning_action": [
+      "教学模式",
+      "学习计划",
+      "学习路径",
+      "入门",
+      "小白",
+      "教程",
+      "怎么上手",
+      "想学会",
+      "教我看",
+      "curriculum",
+      "learn this project",
+      "从零学"
     ]
   },
   "negative_patterns": [
@@ -230,6 +245,30 @@
     {
       "text": "我的项目是个半成品，借一下这个开源项目的模块划分和框架选型，先对比再出借鉴计划",
       "family": "cn_borrow_full"
+    },
+    {
+      "text": "用教学模式教我看懂这个开源项目的架构",
+      "family": "cn_mode_e_teach"
+    },
+    {
+      "text": "我是小白，想入门这个 GitHub 仓库，出个学习计划",
+      "family": "cn_mode_e_beginner"
+    },
+    {
+      "text": "给我一份这个项目的学习路径，从零学它的 Python 框架",
+      "family": "cn_mode_e_path"
+    },
+    {
+      "text": "这个项目怎么上手？帮我做学习教程",
+      "family": "cn_mode_e_tutorial"
+    },
+    {
+      "text": "想学会这个仓库的认证设计，教我看",
+      "family": "cn_mode_e_learn"
+    },
+    {
+      "text": "把项目拆解成面向新手的教学模式，带例子和练习",
+      "family": "cn_mode_e_teardown_to_teach"
     }
   ],
   "should_not_trigger": [
@@ -268,6 +307,14 @@
     {
       "text": "把这两个项目的 README 合并成一份文档",
       "family": "cn_borrow_neg_merge"
+    },
+    {
+      "text": "推荐几个适合学习的开源项目",
+      "family": "cn_mode_e_neg_recommend"
+    },
+    {
+      "text": "把这段代码翻译成英文",
+      "family": "cn_mode_e_neg_translate"
     }
   ],
   "near_neighbor": [
@@ -310,6 +357,14 @@
     {
       "text": "把那个项目的思路套用到我现在遇到的问题上",
       "family": "cn_borrow_near_apply"
+    },
+    {
+      "text": "这个项目学起来难不难？",
+      "family": "cn_mode_e_near_difficulty"
+    },
+    {
+      "text": "给这个仓库写个 README 介绍段",
+      "family": "cn_mode_e_near_readme"
     }
   ]
 }

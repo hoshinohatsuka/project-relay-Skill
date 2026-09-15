@@ -6,14 +6,15 @@
     "borrow_action",
     "community",
     "handoff_action",
+    "learning_action",
     "relay_state",
     "target_project",
     "teardown_action"
   ],
   "missing_description_concepts": [],
   "summary": {
-    "total": 48,
-    "passed": 48,
+    "total": 58,
+    "passed": 58,
     "false_positive": 0,
     "false_negative": 0,
     "pass_rate": 1.0
@@ -135,9 +136,10 @@
         "expected_trigger": true,
         "predicted_trigger": true,
         "passed": true,
-        "score": 0.4,
+        "score": 0.6,
         "matched_concepts": [
           "artifact_or_output",
+          "learning_action",
           "target_project"
         ],
         "negative_pattern": null
@@ -411,6 +413,87 @@
           "target_project"
         ],
         "negative_pattern": null
+      },
+      {
+        "prompt": "用教学模式教我看懂这个开源项目的架构",
+        "family": "cn_mode_e_teach",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "learning_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "我是小白，想入门这个 GitHub 仓库，出个学习计划",
+        "family": "cn_mode_e_beginner",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "learning_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "给我一份这个项目的学习路径，从零学它的 Python 框架",
+        "family": "cn_mode_e_path",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "learning_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "这个项目怎么上手？帮我做学习教程",
+        "family": "cn_mode_e_tutorial",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "learning_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "想学会这个仓库的认证设计，教我看",
+        "family": "cn_mode_e_learn",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "learning_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把项目拆解成面向新手的教学模式，带例子和练习",
+        "family": "cn_mode_e_teardown_to_teach",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "learning_action",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
       }
     ],
     "should_not_trigger": [
@@ -515,6 +598,30 @@
         "score": 0.2,
         "matched_concepts": [
           "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "推荐几个适合学习的开源项目",
+        "family": "cn_mode_e_neg_recommend",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这段代码翻译成英文",
+        "family": "cn_mode_e_neg_translate",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "artifact_or_output"
         ],
         "negative_pattern": null
       }
@@ -624,6 +731,30 @@
       {
         "prompt": "把那个项目的思路套用到我现在遇到的问题上",
         "family": "cn_borrow_near_apply",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "这个项目学起来难不难？",
+        "family": "cn_mode_e_near_difficulty",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "给这个仓库写个 README 介绍段",
+        "family": "cn_mode_e_near_readme",
         "expected_trigger": false,
         "predicted_trigger": false,
         "passed": true,

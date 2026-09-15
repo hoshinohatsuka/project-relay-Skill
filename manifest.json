@@ -1,8 +1,8 @@
 {
   "name": "project-relay",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "owner": "hoshinohatsuka",
-  "updated_at": "2026-09-15",
+  "updated_at": "2026-09-16",
   "status": "active",
   "maturity_tier": "production",
   "context_budget_tier": "production",
@@ -11,7 +11,7 @@
   "license": "MIT",
   "release_gates": {
     "validate_skill": "python scripts/validate_skill.py -> 0 failures",
-    "trigger_eval": "python scripts/evaluate_triggers.py -> 0 failures (48 cases)",
+    "trigger_eval": "python scripts/evaluate_triggers.py -> 0 failures (58 cases)",
     "run_state_check": "scripts/validate_run.py passes on smoke run dirs",
     "license_check": "scripts/check_license.py structure-only: detects declaration, contradictions, missing; verdict is model+user (non-legal)",
     "secret_scan": "no tokens/private keys/cookies/.env values in packaged files",

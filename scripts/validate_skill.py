@@ -20,7 +20,7 @@ REQUIRED_PATHS = (
     "scripts/validate_skill.py", "scripts/evaluate_triggers.py",
     "evals/EVALUATION_PLAN.md", "evals/scenario_matrix.json",
 )
-REQUIRED_MODE_MARKERS = ("模式A", "模式B", "模式C", "模式D", "续跑")
+REQUIRED_MODE_MARKERS = ("模式A", "模式B", "模式C", "模式D", "模式E", "续跑")
 
 
 def load_json(path: Path, errors: list[str]) -> dict:
@@ -58,7 +58,7 @@ def main() -> int:
     for marker in REQUIRED_MODE_MARKERS:
         if marker not in skill:
             errors.append(f"SKILL.md missing workflow marker: {marker}")
-    for token in ("display_name:", "modes:", "- id: teardown", "- id: handoff", "- id: freeze", "- id: borrow", "- id: resume"):
+    for token in ("display_name:", "modes:", "- id: teardown", "- id: handoff", "- id: freeze", "- id: borrow", "- id: learn", "- id: resume"):
         if token not in interface:
             errors.append(f"interface.yaml missing declared interface token: {token}")
     gates = manifest.get("release_gates")
@@ -71,8 +71,8 @@ def main() -> int:
             errors.append(f"trigger_cases.json missing nonempty {section}")
     cases = scenarios.get("cases")
     modes = {case.get("mode") for case in cases} if isinstance(cases, list) else set()
-    if not {"A", "B", "C", "D", "resume"}.issubset(modes):
-        errors.append("scenario matrix does not cover modes A, B, C, D, and resume")
+    if not {"A", "B", "C", "D", "E", "resume"}.issubset(modes):
+        errors.append("scenario matrix does not cover modes A, B, C, D, E, and resume")
 
     result = {"ok": not errors, "errors": errors, "version": manifest.get("version")}
     print(json.dumps(result, ensure_ascii=False, indent=2))
