@@ -19,5 +19,6 @@
     "user_gate": "mode B/D require explicit user approval before touching code (H5/D7)",
     "nested_discovery": "no nested SKILL.md entrypoints",
     "claim_gate": "README states only verified capabilities"
-  }
+  },
+  "context_budget_bytes": 25000
 }

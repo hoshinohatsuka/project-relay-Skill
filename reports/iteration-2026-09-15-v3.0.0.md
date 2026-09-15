@@ -45,3 +45,11 @@
 ## 6. 发布边界
 
 本地开发副本未 push。按用户惯例：本地测试满意后自行推送（远程仓库 `hoshinohatsuka/project-relay-Skill`，建议 v3.0.0 打 tag + Release）。
+## 7. 增补（2026-09-16）：预算放宽至 25,000 字节 + SKILL.md 全量解压
+
+- **预算决策（用户拍板）**：主流模型上下文已进入 1M 时代，SKILL.md 生产档预算由 14,000 放宽至 **25,000 字节**；manifest 新增 `context_budget_bytes: 25000` 声明（qiaomu 无此字段，纯自定义可审计）。渐进披露精神保留：references 仍按需加载，仅骨架上限放宽。
+- **SKILL.md 全量解压**：以 v2.2.0 原文（a37c0d9）为底版恢复被压缩内容——八条不变量全量、四行模式表（含 D）、黑板协议树形图、模式A/B/C 原版措辞、资源索引——并新增模式D 完整版（D0-D8 展开，含双项目登记表、许可证三级判定、意图门禁说明）。当前 19,727 B（<25,000）。
+- **qiaomu-meta-skill 同步修改**：`C:\Users\hoshi\.agents\skills\qiaomu-meta-skill\scripts\validate_skill.py` 的 `MAX_PRODUCTION_SKILL_BYTES` 由 `14_000` 改为 `25_000`（全仓仅此一处硬编码）。注意：该目录为**无 git 的用户级安装副本**，改动不可 git 回滚，建议用户自行备份或记录。
+- **安全锚点**：本地 tag `v2.2.0-backup` 指向 a37c0d9（v2.2.0 原版），未 push。
+- **门禁复测**：打包版 validate 0 错误 / evaluate_triggers 48/48 / validate_run fixtures 0+2；qiaomu validate 超预算警告消失（19,727<25,000），仅剩已知本地 aif-handoff 嵌套失败 + 2 条既有 argparse 警告（非本次引入）。
+- 发布边界不变：未 push。

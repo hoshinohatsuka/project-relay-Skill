@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0-qiaomu-lite",
-  "generated_at": "2026-09-15",
+  "generated_at": "2026-09-16",
   "package": {
     "name": "project-relay",
     "version": "3.0.0",
@@ -137,6 +137,7 @@
       "reports\\evaluation-2026-09-07.md",
       "reports\\iteration-2026-09-05-v2.0.0.md",
       "reports\\iteration-2026-09-06-v2.1.0.md",
+      "reports\\iteration-2026-09-15-v3.0.0.md",
       "reports\\prior-art-research.md",
       "reports\\skill-ir.json",
       "reports\\trigger-eval.json"
