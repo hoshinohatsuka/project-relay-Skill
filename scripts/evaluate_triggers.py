@@ -21,7 +21,11 @@ def contains_any(text: str, words: list[str]) -> bool:
 
 def score_case(text: str, concepts: dict[str, list[str]]) -> tuple[float, list[str]]:
     matched = sorted(name for name, words in concepts.items() if contains_any(text, words))
-    return len(matched) / len(concepts), matched
+    # Denominator is capped so extra concept groups (e.g. borrow_action for mode D)
+    # do not dilute the intended two-concept minimum positive signal. A prompt with
+    # two hits scores 2/5 = 0.4; one hit scores 0.2. Mirrors the qiaomu evaluator.
+    denominator = min(5, max(3, len(concepts)))
+    return len(matched) / denominator, matched
 
 
 def main() -> int:
@@ -40,7 +44,7 @@ def main() -> int:
             score, matched = score_case(text, concepts)
             negative = next((item for item in spec["negative_patterns"] if item.casefold() in text.casefold()), None)
             # A two-concept prompt is the intended minimum positive signal.
-            # Six concept groups make that score exactly 2/6, not 0.34.
+            # With the capped denominator that is 2/5 = 0.4, above the 0.333 threshold.
             predicted = score + 1e-12 >= threshold and negative is None
             passed = predicted == expected
             record = {"family": case["family"], "expected_trigger": expected, "predicted_trigger": predicted, "passed": passed, "score": score, "matched_concepts": matched, "negative_pattern": negative}

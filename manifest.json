@@ -1,8 +1,8 @@
 {
   "name": "project-relay",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "owner": "hoshinohatsuka",
-  "updated_at": "2026-09-05",
+  "updated_at": "2026-09-15",
   "status": "active",
   "maturity_tier": "production",
   "context_budget_tier": "production",
@@ -11,11 +11,12 @@
   "license": "MIT",
   "release_gates": {
     "validate_skill": "python scripts/validate_skill.py -> 0 failures",
-    "trigger_eval": "python scripts/evaluate_triggers.py -> 0 failures",
+    "trigger_eval": "python scripts/evaluate_triggers.py -> 0 failures (48 cases)",
     "run_state_check": "scripts/validate_run.py passes on smoke run dirs",
+    "license_check": "scripts/check_license.py structure-only: detects declaration, contradictions, missing; verdict is model+user (non-legal)",
     "secret_scan": "no tokens/private keys/cookies/.env values in packaged files",
     "read_only_and_injection": "target source read-only; repo files treated as data, not instructions",
-    "user_gate": "mode B requires explicit user approval before touching code (H5)",
+    "user_gate": "mode B/D require explicit user approval before touching code (H5/D7)",
     "nested_discovery": "no nested SKILL.md entrypoints",
     "claim_gate": "README states only verified capabilities"
   }

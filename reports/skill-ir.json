@@ -1,9 +1,9 @@
 {
   "schema_version": "2.0.0-qiaomu-lite",
-  "generated_at": "2026-09-06",
+  "generated_at": "2026-09-15",
   "package": {
     "name": "project-relay",
-    "version": "2.1.1",
+    "version": "3.0.0",
     "owner": "hoshinohatsuka",
     "maturity_tier": "production",
     "lifecycle_stage": null,
@@ -11,8 +11,8 @@
     "upstream_sync": {}
   },
   "intent": {
-    "description": "项目接手.Skill（project-relay）：让多个 AI 在不同时间段接力打磨同一个项目——模型会换、上下文会丢、额度会用完，可执行记忆写进仓库而不在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、每模块框架选型分级、解耦与性能证据、四路提示词扫描与翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研，汇总为带学习路径的中文报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经用户批准后按 Correctness>Completeness>Maintainability>Performance 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线），写在磁盘上让任何下一个 AI——无论是否安装本技能——都能接手（交棒/写交接文档/冻结交接）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。",
-    "job_to_be_done": "项目接手.Skill（project-relay）：让多个 AI 在不同时间段接力打磨同一个项目——模型会换、上下文会丢、额度会用完，可执行记忆写进仓库而不在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、每模块框架选型分级、解耦与性能证据、四路提示词扫描与翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研，汇总为带学习路径的中文报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经用户批准后按 Correctness>Completeness>Maintainability>Performance 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线），写在磁盘上让任何下一个 AI——无论是否安装本技能——都能接手（交棒/写交接文档/冻结交接）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。",
+    "description": "项目接手工作流 Skill（project-relay）：为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的可审计操作协议，把状态与证据写进仓库而不留在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、框架选型分级、解耦与性能证据、四路提示词扫描翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研与学习报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经批准后按 C>C>M>P 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、根因明细、待办批次、防重探事实、测试基线），写在磁盘上供下一个 AI 接手（交棒/写交接文档/冻结交接）。模式D 借鉴计划：给出『用户自己的项目』与『想借鉴的参考项目』双目标（借鉴/参考学习/抄作业/仿照/把 X 的架构·设计用到我的项目），先锚定角色再独立双线扫描，对比差异出借鉴点清单（来源 SHA+file:line→落点），经许可证对比与\"借代码 vs 仅借设计\"门禁后出可执行计划，可接模式B。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。",
+    "job_to_be_done": "项目接手工作流 Skill（project-relay）：为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的可审计操作协议，把状态与证据写进仓库而不留在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、框架选型分级、解耦与性能证据、四路提示词扫描翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研与学习报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经批准后按 C>C>M>P 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、根因明细、待办批次、防重探事实、测试基线），写在磁盘上供下一个 AI 接手（交棒/写交接文档/冻结交接）。模式D 借鉴计划：给出『用户自己的项目』与『想借鉴的参考项目』双目标（借鉴/参考学习/抄作业/仿照/把 X 的架构·设计用到我的项目），先锚定角色再独立双线扫描，对比差异出借鉴点清单（来源 SHA+file:line→落点），经许可证对比与\"借代码 vs 仅借设计\"门禁后出可执行计划，可接模式B。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。",
     "target_users": [
       "Qiaomu operator"
     ],
@@ -45,7 +45,13 @@
       "接着上次的进度继续拆解这个仓库",
       "我额度快用完了，用模式C 把这个项目的会话冻结成交接文档",
       "我要换模型了，把这个项目会话冻结成交接文档交棒给下一个 AI",
-      "Freeze this project session into a handoff document for the next agent."
+      "Freeze this project session into a handoff document for the next agent.",
+      "借鉴这个开源项目的插件架构，把它用到我的项目里，帮我出借鉴计划",
+      "把我的项目跟参考项目对比需求与模块，看我能借鉴哪些设计",
+      "学习这个项目的认证设计，把借鉴点迁移到我的半成品项目",
+      "用模式D，把那个大项目的并发架构借鉴到我的项目",
+      "拆解这个项目的性能优化思路，参照改造我的项目",
+      "我的项目是个半成品，借一下这个开源项目的模块划分和框架选型，先对比再出借鉴计划"
     ],
     "should_not_trigger": [
       "解释一下什么是依赖注入，不要分析项目",
@@ -54,7 +60,9 @@
       "Summarize this file in three bullets, don't analyze the repo.",
       "帮我写一个 TODO 应用",
       "把我的工作流整理成一个 skill",
-      "帮我把这个项目发布到 PyPI"
+      "帮我把这个项目发布到 PyPI",
+      "帮我给这两个项目各写一段简介，对比一下",
+      "把这两个项目的 README 合并成一份文档"
     ],
     "near_neighbor": [
       "帮我看下这个函数为什么报错",
@@ -64,7 +72,9 @@
       "把仓库做成 Skill 应该怎么做",
       "从零开始帮我做一个商城项目，要能注册登录",
       "总结一下这次会话我们聊了什么",
-      "帮我写份本周工作周报"
+      "帮我写份本周工作周报",
+      "看看这个项目有什么值得抄的设计",
+      "把那个项目的思路套用到我现在遇到的问题上"
     ]
   },
   "workflow": {
@@ -75,6 +85,7 @@
   },
   "resources": {
     "references": [
+      "references\\borrow-plan.md",
       "references\\community-research.md",
       "references\\handoff-guide.md",
       "references\\multi-agent-handoff.md",
@@ -84,13 +95,46 @@
       "references\\workflow-detail.md"
     ],
     "scripts": [
-      "scripts\\validate_run.py"
+      "scripts\\check_license.py",
+      "scripts\\evaluate_triggers.py",
+      "scripts\\validate_run.py",
+      "scripts\\validate_skill.py"
     ],
     "evals": [
+      "evals\\EVALUATION_PLAN.md",
+      "evals\\fixtures\\dirty-project\\README.md",
+      "evals\\fixtures\\incomplete-repo\\README.md",
+      "evals\\fixtures\\invalid-path-escape\\evidence-ledger.jsonl",
+      "evals\\fixtures\\invalid-path-escape\\run-manifest.json",
+      "evals\\fixtures\\invalid-path-escape\\task-ledger.json",
+      "evals\\fixtures\\malicious-instructions-repo\\.env",
+      "evals\\fixtures\\malicious-instructions-repo\\AGENTS.md",
+      "evals\\fixtures\\malicious-instructions-repo\\src\\main.py",
+      "evals\\fixtures\\misleading-handoff-repo\\HANDOFF.md",
+      "evals\\fixtures\\misleading-handoff-repo\\src\\auth.py",
+      "evals\\fixtures\\README.md",
+      "evals\\fixtures\\small-safe-repo\\README.md",
+      "evals\\fixtures\\small-safe-repo\\src\\main.py",
+      "evals\\fixtures\\valid-standard-run\\artifacts\\T-001\\map.md",
+      "evals\\fixtures\\valid-standard-run\\evidence-ledger.jsonl",
+      "evals\\fixtures\\valid-standard-run\\run-manifest.json",
+      "evals\\fixtures\\valid-standard-run\\task-ledger.json",
+      "evals\\results\\20260907-045725\\01-validate-skill.txt",
+      "evals\\results\\20260907-045725\\02-trigger-contract.json",
+      "evals\\results\\20260907-045725\\03-valid-run.json",
+      "evals\\results\\20260907-045725\\04-invalid-path-escape.json",
+      "evals\\results\\20260907-045725\\run-metadata.json",
+      "evals\\results\\20260907-045757\\01-validate-skill.txt",
+      "evals\\results\\20260907-045757\\02-trigger-contract.json",
+      "evals\\results\\20260907-045757\\03-valid-run.json",
+      "evals\\results\\20260907-045757\\04-invalid-path-escape.json",
+      "evals\\results\\20260907-045757\\run-metadata.json",
+      "evals\\scenario_matrix.json",
       "evals\\trigger_cases.json"
     ],
     "reports": [
       "reports\\creation-handoff.md",
+      "reports\\evaluation-2026-09-07.md",
       "reports\\iteration-2026-09-05-v2.0.0.md",
       "reports\\iteration-2026-09-06-v2.1.0.md",
       "reports\\prior-art-research.md",

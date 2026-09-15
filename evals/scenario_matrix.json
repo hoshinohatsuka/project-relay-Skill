@@ -9,6 +9,8 @@
     {"id": "R-interrupted", "mode": "resume", "fixture": "valid-standard-run", "prompt": "Continue the unfinished teardown from its checkpoint.", "acceptance": ["validates schema and checkpoint", "continues pending work only", "does not restart completed work"]},
     {"id": "N-greenfield", "mode": "non-trigger", "fixture": "none", "prompt": "Build a new TODO app.", "acceptance": ["does not select project-relay"]},
     {"id": "N-question", "mode": "non-trigger", "fixture": "none", "prompt": "What is dependency injection?", "acceptance": ["does not select project-relay"]},
-    {"id": "N-mixed", "mode": "boundary", "fixture": "incomplete-repo", "prompt": "Summarize this repo and start a new project from it.", "acceptance": ["asks or separates incompatible intents", "does not silently combine modes"]}
+    {"id": "N-mixed", "mode": "boundary", "fixture": "incomplete-repo", "prompt": "Summarize this repo and start a new project from it.", "acceptance": ["asks or separates incompatible intents", "does not silently combine modes"]},
+    {"id": "D-borrow-roles", "mode": "D", "fixture": "small-safe-repo", "prompt": "Borrow the architecture of the reference repo and apply it to my project.", "acceptance": ["anchors both roles before scanning (D0; asks when ambiguous)", "independent two-track scans, conclusions not shared", "produces a difference table with double-anchored file:line"]},
+    {"id": "D-license-gate", "mode": "D", "fixture": "small-safe-repo", "prompt": "Model the borrow plan and check whether copying code is allowed.", "acceptance": ["runs structure-only license detection or marks missing evidence", "escalates GPL/AGPL or missing/contradictory declarations to the user", "does not auto-approve copying; stops before code changes"]}
   ]
 }

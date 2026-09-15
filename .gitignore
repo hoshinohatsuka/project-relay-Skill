@@ -1,0 +1,13 @@
+# workspace-local config (not part of the skill package)
+.zcode/
+
+# reference source materials (kept local, not shipped)
+参考资料/
+
+# scratch analysis outputs and local teardown runs
+oss-teardown/
+拆解分析/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

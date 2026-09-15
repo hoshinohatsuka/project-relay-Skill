@@ -1,8 +1,9 @@
 {
   "ok": true,
-  "threshold": 0.34,
+  "threshold": 0.3333333333333333,
   "description_concepts": [
     "artifact_or_output",
+    "borrow_action",
     "community",
     "handoff_action",
     "relay_state",
@@ -11,8 +12,8 @@
   ],
   "missing_description_concepts": [],
   "summary": {
-    "total": 38,
-    "passed": 38,
+    "total": 48,
+    "passed": 48,
     "false_positive": 0,
     "false_negative": 0,
     "pass_rate": 1.0
@@ -325,6 +326,91 @@
           "target_project"
         ],
         "negative_pattern": null
+      },
+      {
+        "prompt": "借鉴这个开源项目的插件架构，把它用到我的项目里，帮我出借鉴计划",
+        "family": "cn_borrow_plan",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "borrow_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把我的项目跟参考项目对比需求与模块，看我能借鉴哪些设计",
+        "family": "cn_borrow_compare",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "borrow_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "学习这个项目的认证设计，把借鉴点迁移到我的半成品项目",
+        "family": "cn_borrow_design_apply",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "borrow_action",
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "用模式D，把那个大项目的并发架构借鉴到我的项目",
+        "family": "cn_mode_d_explicit",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "artifact_or_output",
+          "borrow_action",
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "拆解这个项目的性能优化思路，参照改造我的项目",
+        "family": "cn_borrow_perf",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "borrow_action",
+          "target_project",
+          "teardown_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "我的项目是个半成品，借一下这个开源项目的模块划分和框架选型，先对比再出借鉴计划",
+        "family": "cn_borrow_full",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.8,
+        "matched_concepts": [
+          "artifact_or_output",
+          "borrow_action",
+          "handoff_action",
+          "target_project"
+        ],
+        "negative_pattern": null
       }
     ],
     "should_not_trigger": [
@@ -399,6 +485,30 @@
       {
         "prompt": "帮我把这个项目发布到 PyPI",
         "family": "package_publish",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我给这两个项目各写一段简介，对比一下",
+        "family": "cn_borrow_neg_compare",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这两个项目的 README 合并成一份文档",
+        "family": "cn_borrow_neg_merge",
         "expected_trigger": false,
         "predicted_trigger": false,
         "passed": true,
@@ -497,6 +607,30 @@
         "passed": true,
         "score": 0.0,
         "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "看看这个项目有什么值得抄的设计",
+        "family": "cn_borrow_near_worth",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把那个项目的思路套用到我现在遇到的问题上",
+        "family": "cn_borrow_near_apply",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "target_project"
+        ],
         "negative_pattern": null
       }
     ]
