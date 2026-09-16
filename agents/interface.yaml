@@ -10,11 +10,11 @@ interface:
     - id: handoff
       label: 模式B 项目接手
       input: 半成品项目路径（+可选交接材料+剩余需求）
-      output: 项目 .ai/ 交接包（七件套+ASSUMPTIONS+checkpoints），经用户门禁后执行收尾
+      output: 项目 .ai/ 交接包（七件套+ASSUMPTIONS+checkpoints），经用户门禁后执行收尾；复核过收敛门（未清阻塞标 manual_review_required）
     - id: freeze
       label: 模式C 交棒冻结
       input: 当前会话 + 目标项目路径（用户说额度不足/要换模型）
-      output: .ai/handoffs/HANDOFF-<主题>-<日期>.md 权威交接文档（红线/状态表/根因明细/待办/防重探事实/测试基线/无技能接手附录）+ .ai/HANDOFF.md 指针更新
+      output: .ai/handoffs/HANDOFF-<主题>-<日期>.md 权威交接文档（红线/状态表/根因明细/待办/防重探事实/测试基线/评审收敛记录/无技能接手附录）+ OWNERSHIP REVISION（防旧文档冒充）+ RUNTIME PROFILE（换模型不漂移）+ .ai/HANDOFF.md 指针更新
     - id: borrow
       label: 模式D 借鉴计划
       input: 用户自己的项目路径 + 想借鉴的参考项目路径/URL（双目标；D0 先锚定角色，不明确即停下询问）

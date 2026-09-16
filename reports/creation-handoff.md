@@ -57,3 +57,7 @@
 ## v3.1.0 增补（2026-09-16，模式E 教学模式）
 
 新增**模式E 教学模式**（E0–E7，单目标 + 学习意图，面向小白）。来源：用户"学习计划"新想法（模式A 产分析报告对小白不友好→把同一分析引擎重排成课程：分阶段学习地图、鲜活例子走读、举一反三练习、第一性原理/对抗式/墨菲三清单教学化）。用户拍板 5 项决策（命名"教学模式"、版本 v3.1.0、练习档位沿用先例 8–12/3–5、三清单每清单 5–8 条、默认小白画像由 E0 询问调整）。先例 keep/adapt/reject/invent 与对抗审查见 `reports/iteration-2026-09-16-v3.1.0.md`。设计优势标注：结构/触发（58 例全过）为 **validated**；模式E 面向真实小白的端到端学习效果为 **hypothesis**（待用户本地测试）。同期决策：SKILL.md 预算 25,000 字节可略超（1M 上下文时代以精确性优先）。
+
+## v3.2.0 增补（2026-09-16，aif-handoff 理念借鉴：收敛评审门/结构化契约/版本号/状态机/审计快照/运行时画像）
+
+用户用模式D 对 [lee-to/aif-handoff](https://github.com/lee-to/aif-handoff)（290★/39fork/MIT，Autonomous Kanban 应用）做双项目拆解后批准高价值 6 条（B1–B6）**仅理念借鉴**（迭代报告：`reports/iteration-2026-09-16-v3.2.0.md`）。B1 收敛感知自动评审门与 B2 结构化评审契约（Blocking/Advisories/Previous Findings 三小节 + finding id 去重 + 前次回喂）**invent 判定为理念翻译**：参考方是数据库/状态机实现，本研究把机制转成协议规则（handoff-guide H7、learning-plan E3、templates 模板 7/19）+ 回归 fixtures，不抄参考方代码。B3 交接所有权版本号、B4 显式状态机（validate_run.py 转移表）、B5 审计可选字段、B6 运行时画像均完成落地。**validated**：结构性门禁全过（validate 0 failures、触发 58/58、validate_run 全套新旧 fixture、SKILL.md 24,906B）。**hypothesis**：收敛门真实复核效果、版本号遵守率、审计字段实际使用率（依赖宿主与模型，待用户真实测试）。新增公理 13–15。参考方归因与拆解证据保留在 `参考资料/项目接手Skill与handoff的借鉴计划/`（gitignore 隔离）。

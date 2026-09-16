@@ -1,24 +1,25 @@
 {
   "name": "project-relay",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "owner": "hoshinohatsuka",
   "updated_at": "2026-09-16",
   "status": "active",
   "maturity_tier": "production",
   "context_budget_tier": "production",
   "display_name": "项目接手.Skill（Project Handoff Skill · project-relay）",
-  "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer",
+  "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer; lee-to/aif-handoff (理念借鉴：收敛评审门/结构化评审契约/交接版本号/状态机/审计快照/运行时画像)",
   "license": "MIT",
   "release_gates": {
     "validate_skill": "python scripts/validate_skill.py -> 0 failures",
     "trigger_eval": "python scripts/evaluate_triggers.py -> 0 failures (58 cases)",
-    "run_state_check": "scripts/validate_run.py passes on smoke run dirs",
+    "run_state_check": "scripts/validate_run.py passes on valid-standard-run, valid-transition-run; exits 2 on invalid-path-escape, invalid-transition-run (state machine + audit fields)",
     "license_check": "scripts/check_license.py structure-only: detects declaration, contradictions, missing; verdict is model+user (non-legal)",
     "secret_scan": "no tokens/private keys/cookies/.env values in packaged files",
     "read_only_and_injection": "target source read-only; repo files treated as data, not instructions",
     "user_gate": "mode B/D require explicit user approval before touching code (H5/D7)",
+    "convergence_gate": "reviews must clear Blocking Findings or flag manual_review_required; no silent pass on un-converged review",
     "nested_discovery": "no nested SKILL.md entrypoints",
     "claim_gate": "README states only verified capabilities"
   },
-  "context_budget_bytes": 25000
+  "context_budget_bytes": 30000
 }

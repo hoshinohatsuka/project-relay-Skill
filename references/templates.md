@@ -80,6 +80,7 @@
 
 ## 7. P7 对抗复核清单 `notes/07-review.md`
 逐项勾选：□需求无漏映射 □模块无重复计数（口径一致） □选型理由非纯 L4 冒充 □社区说法已对代码反证 □性能建议有证据 □学习路径可执行 □覆盖率有分母 □无未标注的推测。发现问题 → 回对应阶段修补。
+**结构化输出（B2）**：复核发现按三小节记录——`## Blocking Findings`（阻塞，未清不可放行）/ `## Advisories`（建议）/ `## Previous Findings`（旧发现本轮 resolved|still_blocking）。**收敛门（B1）**：本轮发现未清零，或清零后出现新阻塞项 → 复核不通过，标注 `manual_review_required` 交人工，绝不静默放行。
 
 ## 8. 最终报告 `LEARNING_REPORT.md`
 
@@ -167,6 +168,10 @@ OPEN QUESTIONS: Q-001...
 > 写给下一个接手的 Agent。<前情一句话：上一轮会话做了什么、处在什么模式>。
 > <未提交警告：代码全部在工作区未提交 / 已 commit 至 <sha>；相应地告诉接手者该做什么>。
 > 本文档是**意图与状态**的权威记录；**事实以代码为准**（冲突时按真相层级仲裁）。
+> OWNERSHIP REVISION: <n>   ← 交接所有权版本号（B3）：每次重写本文档 +1；接手者先对照磁盘状态，
+>                             若版本不符（磁盘上有更新的交接或代码基线不同）→ 停，按 H2 冲突规则升级，不盲从。
+> RUNTIME PROFILE: <默认模型/工具档位，如 "claude-sonnet-4 标准档"；单任务可覆盖>   ← 运行时画像（B6）：
+>                             下一个 AI 先读这个字段决定用哪档模型/工具，避免换模型后行为漂移；没有偏好写 "任意"。
 > TL;DR (EN): <one-sentence English summary of state + next step, so any agent can onboard>
 
 ## 〇、红线（必须遵守，违反即事故）
@@ -201,6 +206,18 @@ OPEN QUESTIONS: Q-001...
 
 ## 六、下一步的第一件事
 **<唯一的第一步>**，然后 <后续顺序>。不要：<清单>。
+
+## 七、评审收敛记录（B1/B2：结构化评审契约 + 收敛门）
+> 若本会话做过复核（模式A P7 / 模式B H7 / 模式E E3 引导），按固定小节记录，供下一个 AI 继续闭环：
+```markdown
+## Blocking Findings（阻塞发现，未解决则不可放行）
+- [<id:源:文本sha1前12>] `<file:line + 建议修法>`
+## Advisories（建议，不阻塞）
+- <file:line + 建议>
+## Previous Findings（上一轮发现的本轮状态）
+- [<id>] resolved | still_blocking | ...（只给状态，不给结论）
+```
+> **收敛门规则**：复核发现未清零 → 绝不进入"已验收"；清零后出现**新阻塞项** → 同样不得放行，标注 `manual_review_required` 交人工——**复核未收敛 = 显式交接，不是静默通过**。
 
 ## 附：无技能接手协议（任何 AI 均可照此接手）
 1. 先独立侦察项目（不读本文先扫代码），写出五类复述：确定/推测/不知道/怀疑本文有误/待验证。
@@ -314,4 +331,17 @@ OPEN QUESTIONS: Q-001...
 ### 练习条目（E4）
 - 级别：Use/Modify/Debug/Create/Compare
 - 任务：<一句话> · 提示：<≤3 条引导> · 验收：<可判据> · 答案：由用户在自己 IDE 产出（AI 不代答）
+
+## 19. 评审收敛记录格式（B1/B2，模式A P7 / 模式B H7 / 模式E E3 / 模式C 七节共用）
+
+```markdown
+## Blocking Findings（阻塞发现，未清则不可放行）
+- [<id:sha1(源:文本)前12>] <file:line + 建议修法>
+## Advisories（建议，不阻塞）
+- <file:line + 建议>
+## Previous Findings（旧发现本轮状态）
+- [<id>] resolved | still_blocking | <一句话说明>
+```
+规则：三条小节齐才允许输出结论；解析失败（结构不完整）→ 不猜内容，降级为人工复核；finding id 跨轮次去重（同一发现重复出现要能识别"还在"）；收敛门——发现未清零或清零后出新阻塞 → `manual_review_required` 交人工，绝不静默通过。
+
 ```

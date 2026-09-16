@@ -13,9 +13,11 @@ python scripts/validate_skill.py
 python scripts/evaluate_triggers.py
 python scripts/validate_run.py evals/fixtures/valid-standard-run
 python scripts/validate_run.py evals/fixtures/invalid-path-escape
+python scripts/validate_run.py evals/fixtures/valid-transition-run
+python scripts/validate_run.py evals/fixtures/invalid-transition-run
 ```
 
-The first three commands must exit 0. The final command must exit 2 and report that `output_path` escapes the run root. Capture stdout and `$LASTEXITCODE` for every command. These checks are not evidence of host auto-triggering or model obedience.
+The first three commands must exit 0, as must the fifth (valid transition chain + optional audit fields). The fourth must exit 2 and report that `output_path` escapes the run root. The sixth must exit 2 and report an illegal state transition (e.g. `done -> pending`) and/or an invalid optional audit field. Capture stdout and `$LASTEXITCODE` for every command. These checks are not evidence of host auto-triggering or model obedience.
 
 ## Manual execution protocol
 

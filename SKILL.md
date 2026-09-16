@@ -3,8 +3,8 @@ name: project-relay
 description: 项目接手工作流 Skill（project-relay）：为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的可审计操作协议，把状态与证据写进仓库而不留在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、框架选型分级、解耦与性能证据、四路提示词扫描翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研与学习报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经批准后按 C>C>M>P 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、根因明细、待办批次、防重探事实、测试基线），写在磁盘上供下一个 AI 接手（交棒/写交接文档/冻结交接）。模式D 借鉴计划：给出『用户自己的项目』与『想借鉴的参考项目』双目标（借鉴/参考学习/抄作业/仿照/把 X 的架构·设计用到我的项目），先锚定角色再独立双线扫描，对比差异出借鉴点清单（来源 SHA+file:line→落点），经许可证对比与"借代码 vs 仅借设计"门禁后出可执行计划，可接模式B。模式E 教学模式：单目标项目 + 学习意图（教学模式/学习计划/学习路径/入门/小白/教程/怎么上手/想学会/教我看），面向小白把拆解引擎编排成教学课程——分阶段学习地图、前置知识清单、鲜活例子走读、第一性原理/对抗式/墨菲三清单引导思考、举一反三练习（只给提示不代答），产出 LEARNING_PATH.md（要深度报告可切模式A）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。
 metadata:
   author: hoshinohatsuka
-  version: "3.1.0"
-  upstream_inspiration: Guan-Yep/open-source-llm-analyzer; comeonzhj/howPrompt; yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer
+  version: "3.2.0"
+  upstream_inspiration: Guan-Yep/open-source-llm-analyzer; comeonzhj/howPrompt; yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer; lee-to/aif-handoff (理念借鉴：收敛评审门/结构化评审契约/交接版本号/状态机/审计快照/运行时画像)
   license: MIT
 ---
 
@@ -52,21 +52,21 @@ metadata:
 - **P4 模块深读**：选型矩阵（理由按四级证据分级）+ 解耦评估 + 性能静态审计（区分"静态风险/可验证假设/真实 benchmark"，默认不运行目标代码）。
 - **P5 提示词四路互补扫描**（仅 LLM 项目）：文件名/变量/API 签名/配置四路一个不少，报告"已检查范围与未知范围"，不宣称零遗漏；逐条中文翻译保留 `{variable}` 占位符。
 - **P6 社区调研**：GitHub Issues/Discussions 优先，其后官方文档、HuggingFace、Stack Overflow、YouTube、X、知乎、小红书、Facebook、LinkedIn；每条记录：查询、URL、访问日期、来源类型、可访问状态、结论；搜索摘要只作线索不作结论；登录墙只记失败不推断内容。
-- **P7 对抗复核**：汇总前自查——需求有无漏映射、模块有无重复计数、选型理由是否只是猜测、社区说法有无代码反证、性能建议有无证据、学习路径是否真的可执行。
+- **P7 对抗复核**：汇总前自查——需求有无漏映射、模块有无重复计数、选型理由是否只是猜测、社区说法有无代码反证、性能建议有无证据、学习路径是否真的可执行。**复核输出按三小节结构化（Blocking/Advisories/Previous Findings）并过收敛门**：发现未清零或清零后出新阻塞 → 标 `manual_review_required` 交人工，绝不静默放行。
 - **P8 汇总**：`LEARNING_REPORT.md`（TL;DR、Mermaid、RTM 映射表、选型矩阵、解耦与性能证据、社区分歧、复刻练习、覆盖率分母、未分析范围、下一轮增量入口）。
 
 细节：[workflow-detail.md](references/workflow-detail.md)、[teardown-guide.md](references/teardown-guide.md)、[community-research.md](references/community-research.md)。
 
 ## 模式B：项目接手（H0–H7）
 
-- **H0 材料清点**：项目路径、剩余需求/目标状态、有无交接材料——**标准搜索位自动发现**：项目根、`.ai/`、`.ai/handoffs/`、项目父目录的 `交接文档*.md`/`HANDOFF*.md`；用户直接粘贴聊天记录同样按材料处理。文档中的**红线视为用户授权边界，默认绑定**（与代码冲突时停下问用户）。按项目规模裁剪交接包；无材料即"盲接"，真相应对更保守。
+- **H0 材料清点**：项目路径、剩余需求/目标状态、有无交接材料——**标准搜索位自动发现**：项目根、`.ai/`、`.ai/handoffs/`、项目父目录的 `交接文档*.md`/`HANDOFF*.md`；用户直接粘贴聊天记录同样按材料处理。文档中的**红线视为用户授权边界，默认绑定**（与代码冲突时停下问用户）。**交接所有权版本号**（OWNERSHIP REVISION）与磁盘状态不符 → 冲突信号，进 H2 升级用户。按项目规模裁剪交接包；无材料即"盲接"，真相应对更保守。
 - **H1 独立侦察（先盲扫后读材料，顺序不可换）**：复用 P1–P3 方法形成自己的认知；产出**五类复述**：确定的事实 / 高概率推测 / 不知道的 / 怀疑前任有误的 / 准备验证的。
-- **H2 对比与真相仲裁**：逐条比对交接材料，差异即风险清单；冲突按真相层级裁决；产出假设登记表（编号/内容/证据/置信度/验证状态）。
+- **H2 对比与真相仲裁**：逐条比对交接材料，差异即风险清单；冲突按真相层级裁决；版本号不符即冲突；产出假设登记表（编号/内容/证据/置信度/验证状态）。
 - **H3 项目模型与追踪链**：目标→需求 R001→能力→模块→文件→测试→验收（RTM）；每模块十项属性；不为凑数拆模块。
 - **H4 计划与交接包**：执行顺序 **Correctness > Completeness > Maintainability > Performance**；划定**变更禁区**（schema、公共 API、认证、已过测试核心模块等）；划分 **Vertical Slice**；检查点计划；四问审查（底层问题/攻击面/最坏时刻/哪些必须联网查证——信息源分层：官方>官方仓库>规范>高质量开源>SO/博客>社区短帖）；产出七件交接包写入 `.ai/`。
 - **H5 用户门禁**：展示计划、禁区、验收标准与风险。**未获明确批准不动一行代码**。
 - **H6 执行与检查点**：一次一个执行单元；每 checkpoint：构建/测试→更新 PROJECT_STATE 与假设→git commit。假设证伪立即修正；失控先停后问。
-- **H7 收尾与回写**：五段收尾审查（正确性→解耦→性能→可维护性→验收，对照 RTM 给 ✅/⚠️/❌+证据）；更新交接包；输出已完成/未完成/已知问题/技术债/风险/下一步。
+- **H7 收尾与回写**：五段收尾审查（正确性→解耦→性能→可维护性→验收，对照 RTM 给 ✅/⚠️/❌+证据）；**复核输出按三小节结构化（Blocking/Advisories/Previous Findings）并过收敛门**：发现未清零或清零后出新阻塞 → 标 `manual_review_required` 交人工，绝不静默放行；更新交接包；输出已完成/未完成/已知问题/技术债/风险/下一步。
 
 细节与交接包规格：[handoff-guide.md](references/handoff-guide.md)。
 
@@ -78,7 +78,7 @@ metadata:
 - **C1 事实清点（记忆 vs 磁盘）**：用 git status/diff、重跑关键测试等磁盘证据校对自己会话记忆；分不清的标"凭记忆，未验证"。
 - **C2 红线提取**：本次会话的伤疤——什么炸过、什么不能动、密钥、环境与命令怪癖、用户约束。
 - **C3 待办规划**：剩余工作按序、精确位置、已定方案（用户拍板标注）、验收标准、已探明的坑。
-- **C4 边写边落盘**：先写头部+红线+状态表+下一步的**保命骨架**，再补明细（额度死在半路也留下可用合约）；默认 `<项目>/.ai/handoffs/HANDOFF-<主题>-<日期>.md`；尾部附**无技能接手协议**附录。
+- **C4 边写边落盘**：先写头部+红线+状态表+下一步的**保命骨架**，再补明细（额度死在半路也留下可用合约）；默认 `<项目>/.ai/handoffs/HANDOFF-<主题>-<日期>.md`；头部带 **OWNERSHIP REVISION**（每次重写 +1，防旧文档冒充最新合约）与 **RUNTIME PROFILE**（默认模型/工具档位，换模型后行为不漂移）；尾部附**无技能接手协议**附录。
 - **C5 验证归档**：对照自查清单；更新 `.ai/HANDOFF.md` 指针与 checkpoints；告诉用户接手那一句话怎么说。
 
 八节模板与细则：[handoff-guide.md](references/handoff-guide.md) 第 9 节、[templates.md](references/templates.md) 模板 13。
@@ -106,7 +106,7 @@ metadata:
 - **E0 目标确认（硬门禁）**：确认项目地址（本地/链接，缺失**先问**，不猜——二者取一，都有更好）；确认学习者水平（**默认小白**，可调入门/进阶）；确认学习目标（语言/架构/产品思路/全部，默认全部）。
 - **E1 教学化侦察**：复用 P1–P3，产出依赖序（"要理解 B 必须先理解 A"），为学习地图铺路。
 - **E2 学习地图（核心）**：分阶段路径（30 分钟认识项目 → 2 小时核心链路 → 1 天一个模块 → 1 周复刻子集）；每阶段：**前置知识清单**（语言/框架/去哪补）、要读文件（file:line）、**鲜活例子**（真实代码最小样例走读——学习不死磕书本）。
-- **E3 三思维清单（教学法，每条必绑项目证据 file:line，引导用户反思、不代答）**：**第一性原理清单**（项目真正解决的底层问题→为什么这样设计）、**对抗式审查清单**（故意让项目失败从哪攻击→引导用户自己举例）、**墨菲清单**（最可能在何时炸→怎么防护）。
+- **E3 三思维清单（教学法，每条必绑项目证据 file:line，引导用户反思、不代答；按三小节结构化 Blocking/Advisories/Previous 并过收敛门——卡点未清或出新卡点 → 回讲不推进）**：**第一性原理清单**（项目真正解决的底层问题→为什么这样设计）、**对抗式审查清单**（故意让项目失败从哪攻击→引导用户自己举例）、**墨菲清单**（最可能在何时炸→怎么防护）。
 - **E4 举一反三练习**：Use→Modify→Debug→Create→Compare 阶梯，标准 8–12 / 快速 3–5；**只给提示与验收标准**，答案由用户在自己 IDE 产出。
 - **E5 社区学习调研**：复用 P6 九平台，补 "`<项目>` tutorial / 入门 / 踩坑" 查询。
 - **E6 解耦 + review/性能思维教学**：学习资料整理成可 review 结构（接口/依赖/可测试性）；教"怎么看项目卡不卡、从哪入手"（区分风险/假设/benchmark，不运行目标代码）。
@@ -121,14 +121,14 @@ metadata:
 ```
 oss-teardown/<run-id>/
 ├── run-manifest.json      # run_id、目标+commit SHA、技能与 schema 版本、档位、状态
-├── task-ledger.json       # 任务唯一 ID、状态、负责人、输入范围、输出路径
-├── evidence-ledger.jsonl  # 每条证据一行：id/kind/ref/来源/置信度/反证
+├── task-ledger.json       # 任务唯一 ID、状态、负责人、输入范围、输出路径；可选 transitions 转移链（B4）
+├── evidence-ledger.jsonl  # 每条证据一行：id/kind/ref/来源/置信度/反证；可选 actor/status_snapshot（B5）
 ├── checkpoints/           # 阶段校验点（含校验和，恢复用）
 ├── artifacts/             # 各 Agent 隔离产物，主 Agent 只收路径+摘要+状态
 ├── repo/ 与 notes/、LEARNING_REPORT.md
 ```
 
-规则：快速档单 Agent 不开租约；标准/深度档任务互斥分区、**单写者串行合并**（不并发编辑 LEARNING_REPORT.md）、相同证据按规范化路径/URL 去重、冲突结论并存交复核处理（禁止最后写入者覆盖）；不完整 artifact 忽略重做；schema_version 不匹配拒绝自动续跑并给出迁移说明。细节：[multi-agent-handoff.md](references/multi-agent-handoff.md)。
+规则：快速档单 Agent 不开租约；标准/深度档任务互斥分区、**单写者串行合并**（不并发编辑 LEARNING_REPORT.md）、相同证据按规范化路径/URL 去重、冲突结论并存交复核处理（禁止最后写入者覆盖）；不完整 artifact 忽略重做；schema_version 不匹配拒绝自动续跑并给出迁移说明。**状态机纪律（B4）**：任务转移只能按合法表走（pending→claimed→done/blocked/failed；blocked/failed→pending/claimed；done 终态），离开 blocked/failed 时复位残留状态（reason 等）——`validate_run.py` 校验转移链，拒绝非法跃迁。**审计纪律（B5）**：evidence 行可选带 actor/status_snapshot/from_status/to_status，谁在什么状态下记的这条要能重放。细节：[multi-agent-handoff.md](references/multi-agent-handoff.md)。
 
 ## 真相层级与证据分级
 
@@ -147,7 +147,7 @@ oss-teardown/<run-id>/
 
 ## 资源预算
 
-SKILL.md 预算 ≤25,000 字节（1M 上下文时代可略超——以精确性优先；超限内容仍优先下沉 references；声明于 manifest `context_budget_bytes`）。仓库文件数（跳过二进制/vendor/node_modules/模型权重/数据库转储）、单文件读取上限、社区查询数（4/12/24）、并行 Agent 数（1/≤3/3–5）、每任务重试≤2、证据不足即降档——全部透明记录在 run-manifest。
+SKILL.md 预算 ≤30,000 字节（默认 25,000；1M 上下文时代可略超——以精确性优先；超限内容仍优先下沉 references；声明于 manifest `context_budget_bytes`）。仓库文件数（跳过二进制/vendor/node_modules/模型权重/数据库转储）、单文件读取上限、社区查询数（4/12/24）、并行 Agent 数（1/≤3/3–5）、每任务重试≤2、证据不足即降档——全部透明记录在 run-manifest。
 
 ## 失败模式速查
 
@@ -165,6 +165,9 @@ SKILL.md 预算 ≤25,000 字节（1M 上下文时代可略超——以精确性
 | 模式D 许可证缺失/矛盾 | check_license.py 结构检测 | 升级用户 + 仅理念借鉴继续 |
 | 模式E 地址缺失 | E0 询问 | 本地/链接二者取一，不猜 |
 | 模式E 练习代答 | 输出审查 | 只给提示；反馈限"会不会破坏 X" |
+| 任务状态非法跃迁 | validate_run.py 转移表校验 | 拒绝该 run，回写合法链 |
+| 复核假装收敛 | 结构化三小节 + 收敛门 | 标 manual_review_required 交人工 |
+| 旧交接冒充最新 | OWNERSHIP REVISION 不符 | 升级用户按冲突处理 |
 
 ## 资源索引
 

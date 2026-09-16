@@ -1,0 +1,6 @@
+{"tasks":[
+  {"id":"T-001","title":"illegal done->pending","status":"pending",
+   "transitions":[{"from":"pending","to":"claimed"},{"from":"claimed","to":"done"},{"from":"done","to":"pending"}]},
+  {"id":"T-002","title":"legal chain but last mismatch","status":"done","output_path":"artifacts/T-002/map.md",
+   "transitions":[{"from":"pending","to":"claimed"},{"from":"claimed","to":"blocked","reason":"x"},{"from":"blocked","to":"claimed"}]}
+]}

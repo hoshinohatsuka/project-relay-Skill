@@ -17,6 +17,27 @@ TASK_STATES = {"pending", "claimed", "done", "blocked", "failed"}
 EVIDENCE_KINDS = {"code", "community", "doc", "inference"}
 REQUIRED_MANIFEST_KEYS = ("schema_version", "skill_version", "run_id", "mode", "target", "tier", "status")
 
+# 显式状态机转移表（模式D 借鉴点 B4：思路源自 aif-handoff stateMachine，仅理念不抄代码）。
+# 规则：pending 未领取；claimed 单租约持有；blocked/failed 必须带 reason；done 为终态。
+# 离开 blocked/failed 回到工作态时必须复位残留状态（reason 等）——复位纪律由协议与模板强制。
+TASK_TRANSITIONS: dict[str, set[str]] = {
+    "pending": {"claimed", "blocked", "failed"},
+    "claimed": {"done", "blocked", "failed"},
+    "blocked": {"pending", "claimed"},
+    "failed": {"pending", "claimed"},
+    "done": set(),
+}
+# 结构化拒绝码（协议层枚举，与 stateMachine 的 denied code 思路同源）。
+TRANSITION_DENIED_CODES = (
+    "action_not_allowed",
+    "status_conflict",
+    "revision_conflict",
+    "assignment_required",
+    "blocked_status_missing",
+)
+# evidence-ledger 可选审计字段（模式D 借鉴点 B5：思路源自 audit.ts 的全字段快照，仅理念不抄代码）。
+EVIDENCE_AUDIT_FIELDS = ("actor", "status_snapshot", "from_status", "to_status")
+
 
 def fail(errors: list[str], msg: str) -> None:
     errors.append(msg)
@@ -97,6 +118,36 @@ def check_tasks(root: Path, errors: list[str]) -> None:
                     fail(errors, f"task {tid}: output_path does not exist: {out}")
         if status in ("blocked", "failed") and not task.get("reason"):
             fail(errors, f"task {tid}: {status} without reason")
+        check_task_transitions(task, tid, errors)
+
+
+def check_task_transitions(task: dict, tid: str, errors: list[str]) -> None:
+    """校验任务的状态机转移链（B4，借鉴 aif-handoff stateMachine 理念）。
+
+    可选字段 `transitions`：前序转移链 `[{"from": ..., "to": ..., "by": ..., "at": ...}, ...]`。
+    仅当存在时校验：每个转移的 from/to 组合必须合法；终态 done 之后不得再有转移；
+    最后一条的 to 必须与当前 status 一致。旧 run（无该字段）向后兼容。
+    """
+    transitions = task.get("transitions")
+    if not isinstance(transitions, list):
+        return
+    if not transitions:
+        fail(errors, f"task {tid}: transitions present but empty")
+        return
+    for i, move in enumerate(transitions, 1):
+        if not isinstance(move, dict):
+            fail(errors, f"task {tid}: transitions[{i}] must be an object")
+            continue
+        frm = move.get("from")
+        to = move.get("to")
+        if frm not in TASK_STATES or to not in TASK_STATES:
+            fail(errors, f"task {tid}: transitions[{i}] illegal state pair {frm!r} -> {to!r}")
+            continue
+        if to not in TASK_TRANSITIONS.get(frm):
+            fail(errors, f"task {tid}: transitions[{i}] illegal transition {frm} -> {to}")
+    last = transitions[-1]
+    if isinstance(last, dict) and last.get("to") != task.get("status"):
+        fail(errors, f"task {tid}: last transition to={last.get('to')!r} != current status {task.get('status')!r}")
 
 
 def check_evidence(root: Path, errors: list[str]) -> int:
@@ -132,7 +183,26 @@ def check_evidence(root: Path, errors: list[str]) -> int:
             fail(errors, f"evidence {eid}: community evidence ref must be a URL")
         if kind == "community" and not entry.get("accessed"):
             fail(errors, f"evidence {eid}: community evidence missing accessed date")
+        check_evidence_audit_fields(entry, eid or lineno, errors)
     return count
+
+
+def check_evidence_audit_fields(entry: dict, label, errors: list[str]) -> None:
+    """evidence 可选审计字段（B5，借鉴 aif-handoff audit.ts 的全字段快照理念）。
+
+    字段全部可选：actor（谁写的）、status_snapshot（当时状态快照）、
+    from_status/to_status（审计流中的状态变迁标签）。存在时校验类型。
+    """
+    actor = entry.get("actor")
+    if actor is not None and not isinstance(actor, str):
+        fail(errors, f"evidence {label}: actor must be a string")
+    snapshot = entry.get("status_snapshot")
+    if snapshot is not None and not isinstance(snapshot, dict):
+        fail(errors, f"evidence {label}: status_snapshot must be an object")
+    for fkey in ("from_status", "to_status"):
+        value = entry.get(fkey)
+        if value is not None and value not in TASK_STATES:
+            fail(errors, f"evidence {label}: {fkey} must be one of {sorted(TASK_STATES)}")
 
 
 def main() -> None:

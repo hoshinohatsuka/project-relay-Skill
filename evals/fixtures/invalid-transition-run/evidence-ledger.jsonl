@@ -1,0 +1,2 @@
+{"id":"E-001","kind":"code","ref":"src/main.py:8","level":"L1","confidence":"high","actor":123}
+{"id":"E-002","kind":"inference","ref":"docs/DECISIONS.md:3","level":"L4","confidence":"low","to_status":"other"}

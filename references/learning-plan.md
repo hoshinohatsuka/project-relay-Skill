@@ -35,6 +35,8 @@
 
 教学纪律：清单是**提问引导**不是知识灌输；每条必须能回溯到项目证据（file:line 或外部来源 URL+日期），无证据条目不算数（复用 P7 复核）；AI 不给"标准答案"，只给证据与框架，答案与联想由用户产出。
 
+**结构化输出（B2）**：三清单的引导结论按固定三小节记录——`## Blocking Findings`（用户理解卡点，未清则本阶段不推进）/ `## Advisories`（补充建议）/ `## Previous Findings`（上轮理解本轮 resolved|still_blocking）。小节不齐 → 不猜，降级为口头引导。**收敛门（B1）**：用户卡点未清，或清了又出现新卡点 → 标注 `manual_review_required`，回到对应阶段重讲，不静默进入下一阶段。
+
 ## E4 举一反三练习（Use→Modify→Debug→Create→Compare 阶梯）
 
 | 档位 | 练习数 | 组成 |

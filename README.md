@@ -18,12 +18,12 @@
 - **红线**：不运行目标代码；选型理由必须标注证据等级（L1 代码证实…L4 分析推断）；stars 不当质量评分；社区搜索摘要不作结论；覆盖率必须有分母。
 
 ### 模式B 项目接手（Handoff & Take Over）
-- **用途**：换一个 AI（或你自己）接手前任留下的半成品/烂尾项目——独立侦察（五类复述）、真相层级仲裁、假设登记、`.ai/` 交接包、检查点执行收尾。
+- **用途**：换一个 AI（或你自己）接手前任留下的半成品/烂尾项目——独立侦察（五类复述）、真相层级仲裁、假设登记、`.ai/` 交接包、检查点执行收尾。收尾复核过**收敛门**：发现未清零或清零后出新阻塞 → 标 `manual_review_required` 交人工，绝不静默放行。
 - **触发标准**："接手 / 收尾 / 烂尾 / 前任 AI / 交接材料 / 继续开发"。
 - **红线**：**未过 H5 用户门禁不动一行代码**；变更禁区（schema/公共 API/认证/已过测试核心模块）未经你批准永不触碰；每个 checkpoint 可回滚；失控先停后问。
 
 ### 模式C 交棒冻结（Freeze & Hand Off）
-- **用途**：额度快用完 / 要换模型时，由**当前 AI** 把会话冻结成权威交接文档——红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线。任何下一个 AI（装没装本技能）都能接手（尾部附无技能接手协议）。
+- **用途**：额度快用完 / 要换模型时，由**当前 AI** 把会话冻结成权威交接文档——红线置顶、状态表、已完成根因明细、待办批次、防重探事实、测试基线、评审收敛记录。任何下一个 AI（装没装本技能）都能接手（尾部附无技能接手协议）。文档带 **OWNERSHIP REVISION**（版本号，防旧文档冒充最新合约）与 **RUNTIME PROFILE**（默认模型/工具档位，换模型后行为不漂移）。
 - **触发标准**："额度不足 / 要换模型 / 交棒 / 冻结交接 / 写交接文档"。
 - **红线**：默认不自动 commit（未提交清单写进文档）；交接文档权威于意图与状态，事实以代码为准；边写边落盘——额度死在半路也留下可用合约。
 
@@ -88,15 +88,17 @@ python scripts/validate_skill.py        # 包结构合同，须 0 failures
 python scripts/evaluate_triggers.py     # 触发合同评测（58 例），须 0 failures
 python scripts/validate_run.py evals/fixtures/valid-standard-run   # 须 exit 0
 python scripts/validate_run.py evals/fixtures/invalid-path-escape  # 须 exit 2
+python scripts/validate_run.py evals/fixtures/valid-transition-run   # 状态机转移链+审计字段，须 exit 0
+python scripts/validate_run.py evals/fixtures/invalid-transition-run # 非法跃迁/坏审计字段，须 exit 2
 python scripts/check_license.py <你的项目> <参考项目>  # 模式D 许可证结构检测（非法律意见）
 ```
 这些只证明文件与确定性合同的结构，不证明宿主自动触发或任意模型逐字遵守流程（详见 `evals/EVALUATION_PLAN.md`）。
 
 ## 已验证与未验证
 
-已验证（可复现命令见上节与 `evals/EVALUATION_PLAN.md`）：包完整性校验、触发合同评测（58 例）、黑板状态校验的正反例，以及六种工作流的人工审查量表。它们证明技能文件、确定性路由合同和状态产物的结构。
+已验证（可复现命令见上节与 `evals/EVALUATION_PLAN.md`）：包完整性校验、触发合同评测（58 例）、黑板状态校验（含状态机转移表与审计字段的正反例），以及六种工作流的人工审查量表。它们证明技能文件、确定性路由合同和状态产物的结构。
 
-未验证（missing evidence）：真实宿主自动触发；真实模型在模式 A–E 与续跑中的端到端遵从性；大规模仓库（>500 模块）深度档表现；登录墙平台社区召回率；模式D 真实双项目借鉴质量与模式E 面向真实小白的学习效果（均依赖宿主与模型，请以你自己的实测为准）。
+未验证（missing evidence）：真实宿主自动触发；真实模型在模式 A–E 与续跑中的端到端遵从性（含收敛门在真实复核中的效果）；大规模仓库（>500 模块）深度档表现；登录墙平台社区召回率；模式D 真实双项目借鉴质量与模式E 面向真实小白的学习效果（均依赖宿主与模型，请以你自己的实测为准）。
 
 ## 故障排查 Troubleshooting
 
@@ -114,6 +116,6 @@ python scripts/check_license.py <你的项目> <参考项目>  # 模式D 许可�
 ## 致谢
 
 - 初始灵感：作者主项目 [Reverie](https://github.com/MuheStudio/Reverie) 的开发经验（跨模型共同打磨项目的经验，也是本 Skill 经验的来源）。
-- 上游灵感：[开源项目大模型应用分析器](https://github.com/Guan-Yep/open-source-llm-analyzer) —— 四路提示词扫描与翻译文档化改编自 howPrompt 系；档位化覆盖率、并行 Worker 与交叉验证参考 repo-analyzer；常驻记忆/在途交接二分借鉴 Cline Memory Bank 与 AI Hero /handoff；强规划弱执行见 Together AI 的 plan-divide-conquer。上游归因声明（manifest.json）：Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer。完整借鉴映射见 `reports/creation-handoff.md`。
+- 上游灵感：[开源项目大模型应用分析器](https://github.com/Guan-Yep/open-source-llm-analyzer) —— 四路提示词扫描与翻译文档化改编自 howPrompt 系；档位化覆盖率、并行 Worker 与交叉验证参考 repo-analyzer；常驻记忆/在途交接二分借鉴 Cline Memory Bank 与 AI Hero /handoff；强规划弱执行见 Together AI 的 plan-divide-conquer。v3.2.0 理念借鉴 [AIF Handoff](https://github.com/lee-to/aif-handoff)（290★）：收敛感知自动评审门、结构化评审契约（Blocking/Advisories/Previous Findings 三小节 + finding id 去重）、交接所有权版本号、显式状态机转移表、不可变审计快照、运行时画像——全部为**理念翻译成协议语言**，非抄代码（双 MIT 兼容）。上游归因声明（manifest.json）：Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer; lee-to/aif-handoff。完整借鉴映射见 `reports/creation-handoff.md`。
 - 方法论来源：作者受朋友们的建议、作者主项目 [Reverie](https://github.com/MuheStudio/Reverie) 的开发经验、[卡兹克老师](https://github.com/KKKKhazix)的文章灵感。
 - 作者：[hoshinohatsuka](https://github.com/hoshinohatsuka) · License: MIT

@@ -1,0 +1,8 @@
+{"tasks":[
+  {"id":"T-001","title":"claimed then done","status":"done","output_path":"artifacts/T-001/map.md",
+   "transitions":[{"from":"pending","to":"claimed","by":"worker-a"},{"from":"claimed","to":"done","by":"worker-a"}]},
+  {"id":"T-002","title":"blocked then retried","status":"claimed",
+   "transitions":[{"from":"pending","to":"claimed","by":"worker-b"},{"from":"claimed","to":"blocked","by":"worker-b","reason":"external dep"},{"from":"blocked","to":"claimed","by":"worker-b"}]},
+  {"id":"T-003","title":"failed then pending","status":"pending",
+   "transitions":[{"from":"pending","to":"failed","by":"worker-c","reason":"timeout"},{"from":"failed","to":"pending","by":"coordinator"}]}
+]}
