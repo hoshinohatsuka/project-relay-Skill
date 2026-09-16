@@ -3,8 +3,8 @@ name: project-relay
 description: 项目接手工作流 Skill（project-relay）：为 Agent 提供跨会话项目分析、接手、冻结交接和续跑的可审计操作协议，把状态与证据写进仓库而不留在聊天框。模式A 拆解学习：深度拆解 GitHub 开源项目（GitHub 链接/owner/repo/本地路径 + 拆解/分析/学习/研究意图），产出基准源码测绘、需求→模块映射、框架选型分级、解耦与性能证据、四路提示词扫描翻译、跨社区（Twitter/X、YouTube、HuggingFace、Stack Overflow、GitHub、知乎、小红书等）结构化口碑调研与学习报告。模式B 项目接手：接手前任 AI 或他人留下的半成品/烂尾项目（接手/收尾/交接包/前任AI/继续开发/烂尾），先独立侦察再对比交接材料、真相层级仲裁、假设登记、生成 .ai/ 交接包，经批准后按 C>C>M>P 纪律与 git 检查点动工。模式C 交棒冻结：额度即将不足或要换模型时，由离场 AI 把当前会话冻结成权威交接文档（红线置顶、状态表、根因明细、待办批次、防重探事实、测试基线），写在磁盘上供下一个 AI 接手（交棒/写交接文档/冻结交接）。模式D 借鉴计划：给出『用户自己的项目』与『想借鉴的参考项目』双目标（借鉴/参考学习/抄作业/仿照/把 X 的架构·设计用到我的项目），先锚定角色再独立双线扫描，对比差异出借鉴点清单（来源 SHA+file:line→落点），经许可证对比与"借代码 vs 仅借设计"门禁后出可执行计划，可接模式B。模式E 教学模式：单目标项目 + 学习意图（教学模式/学习计划/学习路径/入门/小白/教程/怎么上手/想学会/教我看），面向小白把拆解引擎编排成教学课程——分阶段学习地图、前置知识清单、鲜活例子走读、第一性原理/对抗式/墨菲三清单引导思考、举一反三练习（只给提示不代答），产出 LEARNING_PATH.md（要深度报告可切模式A）。支持断点续跑（继续上次未完成的拆解，从 checkpoint 恢复）。不适用于：从零新建无历史项目、无具体目标的技术问答、纯翻译纯解释、普通会话总结或周报、创建与安装技能。
 metadata:
   author: hoshinohatsuka
-  version: "3.2.0"
-  upstream_inspiration: Guan-Yep/open-source-llm-analyzer; comeonzhj/howPrompt; yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer; lee-to/aif-handoff (理念借鉴：收敛评审门/结构化评审契约/交接版本号/状态机/审计快照/运行时画像)
+  version: "3.3.0"
+  upstream_inspiration: Guan-Yep/open-source-llm-analyzer; comeonzhj/howPrompt; yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer; lee-to/aif-handoff (理念借鉴：收敛评审门/结构化评审契约/交接版本号/状态机/审计快照/运行时画像/预算冻结/租约心跳/报告自查清单)
   license: MIT
 ---
 
@@ -128,7 +128,7 @@ oss-teardown/<run-id>/
 ├── repo/ 与 notes/、LEARNING_REPORT.md
 ```
 
-规则：快速档单 Agent 不开租约；标准/深度档任务互斥分区、**单写者串行合并**（不并发编辑 LEARNING_REPORT.md）、相同证据按规范化路径/URL 去重、冲突结论并存交复核处理（禁止最后写入者覆盖）；不完整 artifact 忽略重做；schema_version 不匹配拒绝自动续跑并给出迁移说明。**状态机纪律（B4）**：任务转移只能按合法表走（pending→claimed→done/blocked/failed；blocked/failed→pending/claimed；done 终态），离开 blocked/failed 时复位残留状态（reason 等）——`validate_run.py` 校验转移链，拒绝非法跃迁。**审计纪律（B5）**：evidence 行可选带 actor/status_snapshot/from_status/to_status，谁在什么状态下记的这条要能重放。细节：[multi-agent-handoff.md](references/multi-agent-handoff.md)。
+规则：快速档单 Agent 不开租约；标准/深度档任务互斥分区、**单写者串行合并**（不并发编辑 LEARNING_REPORT.md）、相同证据按规范化路径/URL 去重、冲突结论并存交复核处理（禁止最后写入者覆盖）；不完整 artifact 忽略重做；schema_version 不匹配拒绝自动续跑并给出迁移说明。**状态机纪律（B4）**：任务转移只能按合法表走（pending→claimed→done/blocked/failed；blocked/failed→pending/claimed；done 终态），离开 blocked/failed 时复位残留状态（reason 等）——`validate_run.py` 校验转移链，拒绝非法跃迁。**审计纪律（B5）**：evidence 行可选带 actor/status_snapshot/from_status/to_status，谁在什么状态下记的这条要能重放。**租约纪律（B8）**：claimed 任务带 `claimed_until` + `heartbeat_at`（ISO 8601）——心跳续租、过期/死心跳自动释放、会话结束显式释放；`validate_run.py` 校验时间格式，僵尸租约可被其他 Agent 重新领取。细节：[multi-agent-handoff.md](references/multi-agent-handoff.md)。
 
 ## 真相层级与证据分级
 
@@ -147,7 +147,7 @@ oss-teardown/<run-id>/
 
 ## 资源预算
 
-SKILL.md 预算 ≤30,000 字节（默认 25,000；1M 上下文时代可略超——以精确性优先；超限内容仍优先下沉 references；声明于 manifest `context_budget_bytes`）。仓库文件数（跳过二进制/vendor/node_modules/模型权重/数据库转储）、单文件读取上限、社区查询数（4/12/24）、并行 Agent 数（1/≤3/3–5）、每任务重试≤2、证据不足即降档——全部透明记录在 run-manifest。
+SKILL.md 预算 ≤30,000 字节（默认 25,000；1M 上下文时代可略超——以精确性优先；超限内容仍优先下沉 references；声明于 manifest `context_budget_bytes`）。仓库文件数（跳过二进制/vendor/node_modules/模型权重/数据库转储）、单文件读取上限、社区查询数（4/12/24）、并行 Agent 数（1/≤3/3–5）、每任务重试≤2、证据不足即降档——全部透明记录在 run-manifest。**预算冻结规则（B7）**：任一预算项耗尽 → 进行中任务标 `blocked` + `reason: "budget_exhausted"` + `retry_after: <ISO 时间>`，checkpoint 记 `blocked_external`，到点自动恢复——**不静默降档、不悄悄砍内容**（A/D/E 三模式共用，细节见 multi-agent-handoff.md §6）。
 
 ## 失败模式速查
 
@@ -168,6 +168,8 @@ SKILL.md 预算 ≤30,000 字节（默认 25,000；1M 上下文时代可略超�
 | 任务状态非法跃迁 | validate_run.py 转移表校验 | 拒绝该 run，回写合法链 |
 | 复核假装收敛 | 结构化三小节 + 收敛门 | 标 manual_review_required 交人工 |
 | 旧交接冒充最新 | OWNERSHIP REVISION 不符 | 升级用户按冲突处理 |
+| 预算耗尽 | 预算冻结规则 | blocked + retry_after，到点自动恢复 |
+| 僵尸租约占任务 | claimed_until/heartbeat_at 过期 | 自动释放，其他 Agent 重新领取 |
 
 ## 资源索引
 
@@ -177,6 +179,6 @@ SKILL.md 预算 ≤30,000 字节（默认 25,000；1M 上下文时代可略超�
 - 教学模式（模式E）细则：[references/learning-plan.md](references/learning-plan.md)
 - 多 Agent 黑板/租约/冲突/恢复细则：[references/multi-agent-handoff.md](references/multi-agent-handoff.md)
 - 模式A 操作细节与四路扫描：[references/workflow-detail.md](references/workflow-detail.md) · [references/teardown-guide.md](references/teardown-guide.md) · [references/community-research.md](references/community-research.md)
-- 全部产出模板：[references/templates.md](references/templates.md)
-- run 状态校验脚本：`python scripts/validate_run.py <run目录>`（仅标准库）
+- 全部产出模板：[references/templates.md](references/templates.md)（含模板 20 报告自查清单通则 B10）
+- run 状态校验脚本：`python scripts/validate_run.py <run目录>`（仅标准库；状态机转移表、审计字段、租约/预算字段校验）
 - 许可证结构检测（模式D）：`python scripts/check_license.py <用户项目> <参考项目>`（仅标准库，非法律意见）

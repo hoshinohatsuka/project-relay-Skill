@@ -46,3 +46,5 @@ safety:
   mode_d_borrow: user-gated        # D0 锚定 + D7 许可证/意图门禁；未批准 0 行代码
   license_check: script-structure-only  # check_license.py 只做结构检测，判断权在模型+用户
   citation: required               # 借鉴点强制归因（来源 SHA+file:line）
+  budget_freeze: blocked-external  # 预算耗尽冻结到 retry_after，不静默降档（B7）
+  lease_heartbeat: claimed_until + heartbeat_at  # 租约到期/心跳续期/过期释放（B8）

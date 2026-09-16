@@ -61,3 +61,7 @@
 ## v3.2.0 增补（2026-09-16，aif-handoff 理念借鉴：收敛评审门/结构化契约/版本号/状态机/审计快照/运行时画像）
 
 用户用模式D 对 [lee-to/aif-handoff](https://github.com/lee-to/aif-handoff)（290★/39fork/MIT，Autonomous Kanban 应用）做双项目拆解后批准高价值 6 条（B1–B6）**仅理念借鉴**（迭代报告：`reports/iteration-2026-09-16-v3.2.0.md`）。B1 收敛感知自动评审门与 B2 结构化评审契约（Blocking/Advisories/Previous Findings 三小节 + finding id 去重 + 前次回喂）**invent 判定为理念翻译**：参考方是数据库/状态机实现，本研究把机制转成协议规则（handoff-guide H7、learning-plan E3、templates 模板 7/19）+ 回归 fixtures，不抄参考方代码。B3 交接所有权版本号、B4 显式状态机（validate_run.py 转移表）、B5 审计可选字段、B6 运行时画像均完成落地。**validated**：结构性门禁全过（validate 0 failures、触发 58/58、validate_run 全套新旧 fixture、SKILL.md 24,906B）。**hypothesis**：收敛门真实复核效果、版本号遵守率、审计字段实际使用率（依赖宿主与模型，待用户真实测试）。新增公理 13–15。参考方归因与拆解证据保留在 `参考资料/项目接手Skill与handoff的借鉴计划/`（gitignore 隔离）。
+
+## v3.3.0 增补（2026-09-16，aif-handoff 理念借鉴：预算冻结/租约心跳/报告自查清单）
+
+用户继续批准模式D 中价值 3 条（B7/B8/B10）**仅理念借鉴**（迭代报告：`reports/iteration-2026-09-16-v3.3.0.md`）；B9（MCP 双向同步）落点为主项目 Reverie，非 Skill 本体，仅记录不实施。B7 预算耗尽→自动冻结+恢复（blocked_external+retry_after，三模式预算段统一引用 multi-agent-handoff §6）；B8 租约细化（claimed_until/heartbeat_at，心跳续租/过期释放/优雅释放，validate_run.py 校验 ISO 格式）；B10 每包 CHECKLIST 强制（templates 模板 8/13/14/17 自查清单节 + 模板 20 通则，不适用项写明原因）。**validated**：结构性门禁全过（validate 0 failures、触发 58/58、validate_run 全套新旧 fixture、SKILL.md 25,827B）。**hypothesis**：预算冻结跨会话续跑恢复效果、租约释放真实遵守率、自查清单对报告质量的提升（依赖宿主与模型）。新增 release_gates `budget_freeze_gate` 与 interface safety `budget_freeze`/`lease_heartbeat`。B9 状态：借鉴计划记录待 Reverie 侧拍板。

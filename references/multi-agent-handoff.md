@@ -40,7 +40,8 @@ artifacts/<task-id>/  Worker 隔离产物（临时写这里，校验通过后登
 
 ## 4. 并发与冲突规则
 
-- **互斥分区**：一个任务同一时间只有一个租约持有者（task-ledger 里 claimed + 负责人）；过期租约可重新领取。
+- **互斥分区**：一个任务同一时间只有一个租约持有者（task-ledger 里 claimed + 负责人）。
+- **租约细化（B8）**：claimed 任务带 `claimed_until`（到期时间，ISO 8601）与 `heartbeat_at`（最近心跳，ISO 8601）——租约不是永久占用：Agent 定期更新 `heartbeat_at` 续租；超过 `claimed_until` 或心跳超时（死心跳）视为租约过期，**其他 Agent 可自动重新领取**；会话结束（换模型/额度尽/正常收尾）时**显式释放**租约（改回 pending 或置 done），不把任务留给僵尸租约。过期租约可重新领取。
 - **单写者合并**：LEARNING_REPORT.md 只由主协调者串行写入，Worker 永不直接编辑共享报告。
 - **证据去重**：相同证据按规范化路径或 URL 去重；重复结论并入同一证据条目。
 - **冲突并存**：两个 Worker 结论冲突时不裁"最后写入者"，两条都登记进 evidence-ledger（标 disproof 指向对方），交 P7 对抗复核裁决。
@@ -60,7 +61,11 @@ artifacts/<task-id>/  Worker 隔离产物（临时写这里，校验通过后登
 | 每任务重试 | ≤2 | ≤2 | ≤2 |
 | 跳过项 | 二进制/vendor/node_modules/模型权重/数据库转储/压缩包 | 同左 | 同左 |
 
-预算耗尽：显式降档并在 run-manifest 记录，不静默砍内容。
+**预算冻结规则（B7）**：预算耗尽 → **不静默降档、不悄悄砍内容**。流程：
+1. 耗尽瞬间即把受影响的进行中任务标 `blocked` + `reason: "budget_exhausted"` + `retry_after: <ISO 时间>`（预算恢复时刻，如重置周期）。
+2. 在 checkpoint 记一笔 `blocked_external`（外部配额阻塞）与恢复时间，run-manifest 更新预算消耗。
+3. 到 `retry_after` 后自动恢复对应任务（标回 claimed 或 pending 重新领取），从最近 checkpoint 续跑。
+与模式E 学习预算、模式D 借鉴预算共用同一规则；agent/worker 数量、社区查询数、重试数各自独立记账，任一耗尽都按此冻结，互不拖累。
 
 ## 7. 并行副本交叉验证（模式B 深度档/用户主动要求）
 

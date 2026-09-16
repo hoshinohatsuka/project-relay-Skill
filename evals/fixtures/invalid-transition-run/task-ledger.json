@@ -2,5 +2,9 @@
   {"id":"T-001","title":"illegal done->pending","status":"pending",
    "transitions":[{"from":"pending","to":"claimed"},{"from":"claimed","to":"done"},{"from":"done","to":"pending"}]},
   {"id":"T-002","title":"legal chain but last mismatch","status":"done","output_path":"artifacts/T-002/map.md",
-   "transitions":[{"from":"pending","to":"claimed"},{"from":"claimed","to":"blocked","reason":"x"},{"from":"blocked","to":"claimed"}]}
+   "transitions":[{"from":"pending","to":"claimed"},{"from":"claimed","to":"blocked","reason":"x"},{"from":"blocked","to":"claimed"}]},
+  {"id":"T-003","title":"bad iso lease","status":"claimed",
+   "claimed_until":"not-a-date"},
+  {"id":"T-004","title":"retry_after without reason","status":"blocked",
+   "retry_after":"2026-09-17T00:00:00+08:00"}
 ]}

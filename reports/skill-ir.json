@@ -3,11 +3,11 @@
   "generated_at": "2026-09-16",
   "package": {
     "name": "project-relay",
-    "version": "3.2.0",
+    "version": "3.3.0",
     "owner": "hoshinohatsuka",
     "maturity_tier": "production",
     "lifecycle_stage": null,
-    "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer; lee-to/aif-handoff (理念借鉴：收敛评审门/结构化评审契约/交接版本号/状态机/审计快照/运行时画像)",
+    "upstream_inspiration": "Guan-Yep/open-source-llm-analyzer (howPrompt by comeonzhj); yzddmr6/repo-analyzer; Cline Memory Bank; agents.md; AI Hero /handoff; Together AI plan-divide-conquer; lee-to/aif-handoff (理念借鉴：收敛评审门/结构化评审契约/交接版本号/状态机/审计快照/运行时画像/预算冻结/租约心跳/报告自查清单)",
     "upstream_sync": {}
   },
   "intent": {

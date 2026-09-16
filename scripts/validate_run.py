@@ -37,6 +37,8 @@ TRANSITION_DENIED_CODES = (
 )
 # evidence-ledger 可选审计字段（模式D 借鉴点 B5：思路源自 audit.ts 的全字段快照，仅理念不抄代码）。
 EVIDENCE_AUDIT_FIELDS = ("actor", "status_snapshot", "from_status", "to_status")
+# 租约/预算可选字段（模式D 借鉴点 B8/B7：租约到期+心跳续期+过期释放；预算耗尽→blocked_external+retry_after）。
+LEASE_FIELDS = ("claimed_until", "heartbeat_at", "retry_after")
 
 
 def fail(errors: list[str], msg: str) -> None:
@@ -119,6 +121,32 @@ def check_tasks(root: Path, errors: list[str]) -> None:
         if status in ("blocked", "failed") and not task.get("reason"):
             fail(errors, f"task {tid}: {status} without reason")
         check_task_transitions(task, tid, errors)
+        check_lease_fields(task, tid, status, errors)
+
+
+def check_lease_fields(task: dict, tid: str, status, errors: list[str]) -> None:
+    """租约与预算字段（B8/B7，借鉴 aif-handoff 租约与配额快照理念）。
+
+    可选字段：claimed_until/heartbeat_at（租约到期与心跳时间）、retry_after（预算冻结恢复时间）。
+    存在时必须为 ISO 8601 字符串；claimed 任务带租约时间表示"有续租机制"，
+    未带则按无租约处理（向后兼容旧 run）。retry_after 应与 reason 一起出现。
+    """
+    from datetime import datetime
+    for fkey in LEASE_FIELDS:
+        value = task.get(fkey)
+        if value is None:
+            continue
+        if not isinstance(value, str):
+            fail(errors, f"task {tid}: {fkey} must be an ISO 8601 string")
+            continue
+        try:
+            datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            fail(errors, f"task {tid}: {fkey} is not valid ISO 8601: {value!r}")
+    if task.get("retry_after") is not None and status not in ("blocked", "failed"):
+        fail(errors, f"task {tid}: retry_after only valid on blocked/failed tasks")
+    if task.get("retry_after") is not None and not task.get("reason"):
+        fail(errors, f"task {tid}: retry_after requires a reason (e.g. budget_exhausted)")
 
 
 def check_task_transitions(task: dict, tid: str, errors: list[str]) -> None:

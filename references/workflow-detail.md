@@ -58,3 +58,7 @@ Grep（大小写不敏感）：`system_prompt`、`SYSTEM_PROMPT`、`PROMPT_`、`
 - 翻译保留：JSON 结构、Markdown 格式、代码块、`{variable}` 占位符、转义符。模板见 [templates.md](templates.md)。
 - 全部完成后写 `INDEX.md` 索引表（序号/文档/原文件/功能/调用位置）。
 - 一条都没找到：如实报告四方法各自覆盖了什么，写 `notes/05-prompts/EMPTY.md`，不要编造。
+
+## 4. 资源预算与冻结（B7，全模式共用）
+
+模式A 预算（社区查询 4/12/24、Agent 数、重试 ≤2）与运行约束统一见 [multi-agent-handoff.md](multi-agent-handoff.md) §6。**耗尽即冻结**：任一预算项耗尽 → 进行中任务标 `blocked` + `reason: "budget_exhausted"` + `retry_after: <ISO 时间>`，checkpoint 记 `blocked_external`，到点自动恢复——**不静默降档、不悄悄砍内容**。模式D（borrow-plan.md D5）与模式E（learning-plan.md E5）引用同一规则。

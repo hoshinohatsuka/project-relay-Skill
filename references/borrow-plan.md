@@ -53,6 +53,8 @@
 - `<框架> migration 经验`（若涉及框架迁移）
 - `<参考项目> license 争议`（社区对版权/许可证的讨论，仅作线索）
 
+**预算冻结（B7）**：D 的社区查询/Agent 预算耗尽 → 进行中任务标 `blocked` + `reason: "budget_exhausted"` + `retry_after: <ISO 时间>`，checkpoint 记 `blocked_external`，到点自动恢复。不静默降档；"仅理念"部分若预算足够可继续，抄代码部分冻结到预算恢复。
+
 ## D6 解耦与性能门（每个借鉴点）
 
 回答"借鉴的代码搬进我的项目会不会引入坏味道"：
