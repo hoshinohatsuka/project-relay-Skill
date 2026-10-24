@@ -65,3 +65,7 @@
 ## v3.3.0 增补（2026-09-16，aif-handoff 理念借鉴：预算冻结/租约心跳/报告自查清单）
 
 用户继续批准模式D 中价值 3 条（B7/B8/B10）**仅理念借鉴**（迭代报告：`reports/iteration-2026-09-16-v3.3.0.md`）；B9（MCP 双向同步）落点为主项目 Reverie，非 Skill 本体，仅记录不实施。B7 预算耗尽→自动冻结+恢复（blocked_external+retry_after，三模式预算段统一引用 multi-agent-handoff §6）；B8 租约细化（claimed_until/heartbeat_at，心跳续租/过期释放/优雅释放，validate_run.py 校验 ISO 格式）；B10 每包 CHECKLIST 强制（templates 模板 8/13/14/17 自查清单节 + 模板 20 通则，不适用项写明原因）。**validated**：结构性门禁全过（validate 0 failures、触发 58/58、validate_run 全套新旧 fixture、SKILL.md 25,827B）。**hypothesis**：预算冻结跨会话续跑恢复效果、租约释放真实遵守率、自查清单对报告质量的提升（依赖宿主与模型）。新增 release_gates `budget_freeze_gate` 与 interface safety `budget_freeze`/`lease_heartbeat`。B9 状态：借鉴计划记录待 Reverie 侧拍板。
+
+## v4.0.0 增补（2026-10-25，模式A 瘦身：项目拆解 + 学习流程迁移模式E）
+
+用户驱动重构：模式A 由"拆解学习"更名**"项目拆解"**，仅保留深度拆解（基线测绘/需求→模块映射/选型矩阵/解耦与性能/四路扫描/社区口碑），学习流程（学习路径/复刻练习/可迁移清单）整体迁至模式E；出口报告 `LEARNING_REPORT.md` 更名 `TEARDOWN_REPORT.md`（无代码依赖，已核实 validate_run.py 零引用文件名）。模式E 成为所有学习/学会类意图的唯一归属，新增"可迁移清单"承接迁移。版本 v4.0.0（既有模式语义重划分）。用户拍板 4 项、完整变更清单（file:line 对照）、prior-art（无同类先例，invent）与 validated/hypothesis 分级见 `reports/iteration-2026-10-25-v4.0.0.md`。顺带修复本技能自拆解（模式A 分析自身，`分析结果/`）发现的 A-01（templates.md 嵌套 fence 渲染截断）与 A-02（readme-EN 标题挤行）。安全锚点 tag `pre-v4-mode-a-refactor`。**validated**：结构性门禁全过（validate 0 failures、触发 58/58、validate_run 四 fixture、fence CommonMark 配对、活文档残留扫描清零）。**hypothesis**：路由改道（学习意图 A→E）宿主语义路由准确性、模式E 面向进阶学习者效果（依赖宿主与模型，missing evidence）。

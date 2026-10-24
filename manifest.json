@@ -1,8 +1,8 @@
 {
   "name": "project-relay",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "owner": "hoshinohatsuka",
-  "updated_at": "2026-09-16",
+  "updated_at": "2026-10-25",
   "status": "active",
   "maturity_tier": "production",
   "context_budget_tier": "production",

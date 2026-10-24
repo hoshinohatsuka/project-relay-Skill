@@ -10,7 +10,7 @@ One skill, four uses
 
 |---|---|---|
 
-| **A. Teardown & Learn** | Give it a GitHub project and require it to be broken down/analyzed/learned | `oss-teardown/<run-id>/`: baseline mapping, requirement → module mapping, selection matrix (evidence grading), decoupling and performance evidence, cue word translation, structured community survey, `LEARNING_REPORT.md` (including learning path) |
+| **A. Teardown** | Give it a GitHub project and require it to be broken down/analyzed | `oss-teardown/<run-id>/`: baseline mapping, requirement → module mapping, selection matrix (evidence grading), decoupling and performance evidence, cue word translation, structured community survey, `TEARDOWN_REPORT.md` |
 
 | **B. Handoff (take over)** | Take over a half-finished/unfinished project left by a predecessor AI or others | Project `.ai/` handover package (PROJECT_STATE / REQUIREMENTS / ARCHITECTURE / DECISIONS / TODO / TEST_PLAN / HANDOFF / ASSUMPTIONS / checkpoints), after your approval, sorted by `Correctness > Completeness > Maintainability > ... Performance Discipline and Git Checkpoints |
 
@@ -18,21 +18,23 @@ One skill, four uses
 
 | **Resume from Breakpoint** | "Continue the unfinished breakdown" | Restore from `run-manifest.json` / checkpoint, without rerunning |
 
-**Core Axiom**: Don't let the next model re-understand the project. A breaks down the project and learns its modules and architecture; C writes the contract, B verifies the contract; documentation is authoritative over intent and state, code is authoritative over facts; the red line remains bound even when crossing tool boundaries.
+**Core Axiom**: Don't let the next model re-understand the project. A tears the project down into its modules and architecture; C writes the contract, B verifies the contract; documentation is authoritative over intent and state, code is authoritative over facts; the red line remains bound even when crossing tool boundaries.
 
 ---
 
 ## How to Use
 
-### Mode A: Deconstruction and Learning
-In a new conversation, simply say: "**Help me deconstruct and analyze a certain open-source project (provide the AI ​​with a link or the location of a cloned local repository)**". You can add tiers ("Quick Deconstruction" / "In-Depth Deconstruction") and focus points ("Focus on Performance"). Output is in `oss-teardown/<run-id>/`: `notes/` evidence for each stage + `LEARNING_REPORT.md`. Tier budgets: Quick (single Agent, community search ≤4, core modules ≥30%) / Standard (default, ≤12, ≥60%) / In-Depth (3–5 Workers, ≤24, ≥90%).
+### Mode A: Project Teardown
+In a new conversation, simply say: "**Help me deconstruct and analyze a certain open-source project (provide the AI ​​with a link or the location of a cloned local repository)**". You can add tiers ("Quick Deconstruction" / "In-Depth Deconstruction") and focus points ("Focus on Performance"). Output is in `oss-teardown/<run-id>/`: `notes/` evidence for each stage + `TEARDOWN_REPORT.md`. Tier budgets: Quick (single Agent, community search ≤4, core modules ≥30%) / Standard (default, ≤12, ≥60%) / In-Depth (3–5 Workers, ≤24, ≥90%).
 
 ### Mode B: Project Takeover
 Say: "**Take over this project. The previous AI left handover materials. First, conduct independent reconnaissance, then compare, and generate a takeover plan**". Process: Blind scan to form your own understanding (five types of restatement) → Compare with handover materials → Truth hierarchy arbitration (code > document) → Hypothesis registration → Generate `.ai/` handover package → **H5 user access control: only move a line of code after your approval** → Checkpoint execution → Five-stage final acceptance. Red lines in the handover document are bound by default; only after the AI ​​clearly understands your project can you release them and let it work.
 
-### Mode C Handover Freeze When you feel your quota is running out, tell the **current AI**: "**My quota is running out; use Mode C to freeze the session for this project and hand over the handover document**." It will go through C0–C5: confirm path → check memory with git status/diff → extract red lines and to-dos → **write and dump simultaneously** (write the header + red lines + status table + the next safety skeleton first; even if the quota dies halfway, a valid contract remains) → self-check and archive. The document is located in `<project>/.ai/handoffs/HANDOFF-<subject>-<date>.md`, with a "No-Skill Takeover Agreement" appended at the end. **The next AI can take over regardless of whether they have this skill installed.**
+### Mode C Handover Freeze
+When you feel your quota is running out, tell the **current AI**: "**My quota is running out; use Mode C to freeze the session for this project and hand over the handover document**." It will go through C0–C5: confirm path → check memory with git status/diff → extract red lines and to-dos → **write and dump simultaneously** (write the header + red lines + status table + the next safety skeleton first; even if the quota dies halfway, a valid contract remains) → self-check and archive. The document is located in `<project>/.ai/handoffs/HANDOFF-<subject>-<date>.md`, with a "No-Skill Takeover Agreement" appended at the end. **The next AI can take over regardless of whether they have this skill installed.**
 
-### Resuming from Breakpoints The new session says: "**Continue the disassembly that wasn't finished yesterday, resuming from the last checkpoint.**" The skill reads `run-manifest.json` in the run directory, verifies the schema version, and then continues from the breakpoint.
+### Resuming from Breakpoints
+The new session says: "**Continue the disassembly that wasn't finished yesterday, resuming from the last checkpoint.**" The skill reads `run-manifest.json` in the run directory, verifies the schema version, and then continues from the breakpoint.
 
 ### You can say it like this:
 

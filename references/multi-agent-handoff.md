@@ -42,7 +42,7 @@ artifacts/<task-id>/  Worker 隔离产物（临时写这里，校验通过后登
 
 - **互斥分区**：一个任务同一时间只有一个租约持有者（task-ledger 里 claimed + 负责人）。
 - **租约细化（B8）**：claimed 任务带 `claimed_until`（到期时间，ISO 8601）与 `heartbeat_at`（最近心跳，ISO 8601）——租约不是永久占用：Agent 定期更新 `heartbeat_at` 续租；超过 `claimed_until` 或心跳超时（死心跳）视为租约过期，**其他 Agent 可自动重新领取**；会话结束（换模型/额度尽/正常收尾）时**显式释放**租约（改回 pending 或置 done），不把任务留给僵尸租约。过期租约可重新领取。
-- **单写者合并**：LEARNING_REPORT.md 只由主协调者串行写入，Worker 永不直接编辑共享报告。
+- **单写者合并**：TEARDOWN_REPORT.md 只由主协调者串行写入，Worker 永不直接编辑共享报告。
 - **证据去重**：相同证据按规范化路径或 URL 去重；重复结论并入同一证据条目。
 - **冲突并存**：两个 Worker 结论冲突时不裁"最后写入者"，两条都登记进 evidence-ledger（标 disproof 指向对方），交 P7 对抗复核裁决。
 - **半写防护**：artifact 无完成标志即视为不完整，忽略并重做该任务。

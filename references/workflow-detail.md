@@ -1,6 +1,6 @@
 # 阶段操作细节与四路扫描模式
 
-对应 SKILL.md 模式A 的 P1、P2、P5。改编自 Guan-Yep/open-source-llm-analyzer（原 howPrompt 工作流），按"拆解学习 + 可审计"目标扩展。
+对应 SKILL.md 模式A 的 P1、P2、P5。改编自 Guan-Yep/open-source-llm-analyzer（原 howPrompt 工作流），按"项目拆解 + 可审计"目标扩展。
 
 ## 0. 安全细则（贯穿各阶段）
 

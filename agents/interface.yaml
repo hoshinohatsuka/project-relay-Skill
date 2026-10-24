@@ -1,12 +1,12 @@
 interface:
   display_name: 项目接手.Skill（Project Handoff Skill · project-relay）
-  short_description: 为 Agent 提供模式A 拆解学习、模式B 项目接手、模式C 交棒冻结、模式D 借鉴计划、模式E 教学模式与断点续跑的操作协议，并要求持久化状态和证据；实际执行质量取决于宿主和模型。
-  default_prompt: 帮我拆解分析这个开源项目 https://github.com/<owner>/<repo>，按标准档位输出学习报告。
+  short_description: 为 Agent 提供模式A 项目拆解、模式B 项目接手、模式C 交棒冻结、模式D 借鉴计划、模式E 教学模式与断点续跑的操作协议，并要求持久化状态和证据；实际执行质量取决于宿主和模型。
+  default_prompt: 帮我拆解分析这个开源项目 https://github.com/<owner>/<repo>，按标准档位输出拆解报告。
   modes:
     - id: teardown
-      label: 模式A 拆解学习
+      label: 模式A 项目拆解
       input: GitHub URL / owner/repo / 本地路径（+档位 quick|standard|deep，+focus 关注点）
-      output: oss-teardown/<run-id>/（黑板状态 + notes/ + LEARNING_REPORT.md）
+      output: oss-teardown/<run-id>/（黑板状态 + notes/ + TEARDOWN_REPORT.md）
     - id: handoff
       label: 模式B 项目接手
       input: 半成品项目路径（+可选交接材料+剩余需求）
@@ -21,8 +21,8 @@ interface:
       output: BORROWING_PLAN.md（双项目登记表/差异对比/借鉴点清单/许可证判定记录），经 D7 用户门禁后接模式B 执行
     - id: learn
       label: 模式E 教学模式
-      input: 单目标项目路径/URL（缺失先询问）+ 学习者水平（默认小白）+ 学习目标
-      output: LEARNING_PATH.md（分阶段学习地图/前置清单/鲜活例子/三思维清单/举一反三练习），面向小白；要深度报告切模式A
+      input: 单目标项目路径/URL（缺失先询问）+ 学习者水平（默认小白）+ 学习目标；所有学习/学会类意图统一归此模式
+      output: LEARNING_PATH.md（分阶段学习地图/前置清单/鲜活例子/三思维清单/举一反三练习/可迁移清单），面向学习者（默认小白）；要深度拆解报告切模式A
     - id: resume
       label: 断点续跑
       input: "继续上次未完成的拆解"
