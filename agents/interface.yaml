@@ -14,7 +14,7 @@ interface:
     - id: freeze
       label: 模式C 交棒冻结
       input: 当前会话 + 目标项目路径（用户说额度不足/要换模型；长会话 AI 应主动预警建议交棒）
-      output: .ai/handoffs/ 两件套——HANDOFF-<主题>-<日期>.md 权威交接文档（红线/状态表/根因明细/待办/防重探事实/测试基线/评审收敛记录/无技能接手附录）+ 当前会话上下文.md（九段会话上下文压缩产物：意图原话/决策理由/术语/协作画像/最近对话引用；固定文件名永远最新）+ OWNERSHIP REVISION 两件同步（防旧文档冒充）+ RUNTIME PROFILE（换模型不漂移）+ .ai/HANDOFF.md 指针更新
+      output: .ai/handoffs/ 两件套——HANDOFF-项目交接-<日期>.md 权威交接文档（红线/状态表/根因明细/待办/防重探事实/测试基线/评审收敛记录/无技能接手附录）+ 当前会话上下文.md（九段会话上下文压缩产物：意图原话/决策理由/术语/协作画像/最近对话引用；固定文件名永远最新）+ OWNERSHIP REVISION 两件同步（防旧文档冒充）+ RUNTIME PROFILE（换模型不漂移）+ .ai/HANDOFF.md 指针更新
     - id: borrow
       label: 模式D 借鉴计划
       input: 用户自己的项目路径 + 想借鉴的参考项目路径/URL（双目标；D0 先锚定角色，不明确即停下询问）
