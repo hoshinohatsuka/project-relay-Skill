@@ -69,3 +69,11 @@
 ## v4.0.0 增补（2026-10-25，模式A 瘦身：项目拆解 + 学习流程迁移模式E）
 
 用户驱动重构：模式A 由"拆解学习"更名**"项目拆解"**，仅保留深度拆解（基线测绘/需求→模块映射/选型矩阵/解耦与性能/四路扫描/社区口碑），学习流程（学习路径/复刻练习/可迁移清单）整体迁至模式E；出口报告 `LEARNING_REPORT.md` 更名 `TEARDOWN_REPORT.md`（无代码依赖，已核实 validate_run.py 零引用文件名）。模式E 成为所有学习/学会类意图的唯一归属，新增"可迁移清单"承接迁移。版本 v4.0.0（既有模式语义重划分）。用户拍板 4 项、完整变更清单（file:line 对照）、prior-art（无同类先例，invent）与 validated/hypothesis 分级见 `reports/iteration-2026-10-25-v4.0.0.md`。顺带修复本技能自拆解（模式A 分析自身，`分析结果/`）发现的 A-01（templates.md 嵌套 fence 渲染截断）与 A-02（readme-EN 标题挤行）。安全锚点 tag `pre-v4-mode-a-refactor`。**validated**：结构性门禁全过（validate 0 failures、触发 58/58、validate_run 四 fixture、fence CommonMark 配对、活文档残留扫描清零）。**hypothesis**：路由改道（学习意图 A→E）宿主语义路由准确性、模式E 面向进阶学习者效果（依赖宿主与模型，missing evidence）。
+
+## v4.1.0（2026-10-25）：模式B/C 上下文压缩增强
+
+- 触发：用户指令——学习 Claude Code/codex 上下文压缩技术后优化模式C（导出交接文档后必须再产出「当前会话上下文.md」），模式B 承接新产物并让下一个 AI 完整理解上一任流程与用户意图；用户纠偏要求先用模式D 做对比（"用本技能来优化本技能"）。
+- 过程：三源调研（cc-notebook/AI-fundamentals 全文、codex@970111f6cb 压缩子系统源码级拆解、百度博客不可达记 missing evidence）→ 模式D 借鉴计划（J1–J13，许可证门禁 MIT↔Apache-2.0 通过，仅借设计零代码复制）→ 实施。
+- 产物：模式C 两件套（HANDOFF + 当前会话上下文.md 九段：意图原话/决策及被否方案/术语/文件索引/错误失败/用户画像/待办未决/当前快照/下一步+最近对话引用；固定文件名永远最新，REVISION 两件同步，软预算 ≤6KB，引文不贴全文）；模式B 分区承接（意图段头部①②③⑥盲扫前先读、状态段④⑤⑦⑧⑨与 HANDOFF 留 H2，H2 意图仲裁，H7 过时标注）；C0 主动预警 + 用户特别嘱咐。
+- 归档：`上下文压缩机制/00–05`（学习成果与模式D 对比）；codex 拆解 `../../codex/拆解结果/`（黑板 validate_run ok，13 证据）。
+- 迭代报告：`reports/iteration-2026-10-25-v4.1.0.md`。
